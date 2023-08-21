@@ -1,0 +1,444 @@
+<!DOCTYPE html><html lang="en"><head><title>How to integrate Kill Bill and Stripe end-to-end for a Monthly Subscription</title><style>pre.pygments .hll { background-color: #ffffcc }
+pre.pygments { background: #f8f8f8; }
+pre.pygments .tok-c { color: #3D7B7B; font-style: italic } /* Comment */
+pre.pygments .tok-err { border: 1px solid #FF0000 } /* Error */
+pre.pygments .tok-k { color: #008000; font-weight: bold } /* Keyword */
+pre.pygments .tok-o { color: #666666 } /* Operator */
+pre.pygments .tok-ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+pre.pygments .tok-cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+pre.pygments .tok-cp { color: #9C6500 } /* Comment.Preproc */
+pre.pygments .tok-cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+pre.pygments .tok-c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+pre.pygments .tok-cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+pre.pygments .tok-gd { color: #A00000 } /* Generic.Deleted */
+pre.pygments .tok-ge { font-style: italic } /* Generic.Emph */
+pre.pygments .tok-gr { color: #E40000 } /* Generic.Error */
+pre.pygments .tok-gh { color: #000080; font-weight: bold } /* Generic.Heading */
+pre.pygments .tok-gi { color: #008400 } /* Generic.Inserted */
+pre.pygments .tok-go { color: #717171 } /* Generic.Output */
+pre.pygments .tok-gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+pre.pygments .tok-gs { font-weight: bold } /* Generic.Strong */
+pre.pygments .tok-gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+pre.pygments .tok-gt { color: #0044DD } /* Generic.Traceback */
+pre.pygments .tok-kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+pre.pygments .tok-kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+pre.pygments .tok-kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+pre.pygments .tok-kp { color: #008000 } /* Keyword.Pseudo */
+pre.pygments .tok-kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+pre.pygments .tok-kt { color: #B00040 } /* Keyword.Type */
+pre.pygments .tok-m { color: #666666 } /* Literal.Number */
+pre.pygments .tok-s { color: #BA2121 } /* Literal.String */
+pre.pygments .tok-na { color: #687822 } /* Name.Attribute */
+pre.pygments .tok-nb { color: #008000 } /* Name.Builtin */
+pre.pygments .tok-nc { color: #0000FF; font-weight: bold } /* Name.Class */
+pre.pygments .tok-no { color: #880000 } /* Name.Constant */
+pre.pygments .tok-nd { color: #AA22FF } /* Name.Decorator */
+pre.pygments .tok-ni { color: #717171; font-weight: bold } /* Name.Entity */
+pre.pygments .tok-ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+pre.pygments .tok-nf { color: #0000FF } /* Name.Function */
+pre.pygments .tok-nl { color: #767600 } /* Name.Label */
+pre.pygments .tok-nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+pre.pygments .tok-nt { color: #008000; font-weight: bold } /* Name.Tag */
+pre.pygments .tok-nv { color: #19177C } /* Name.Variable */
+pre.pygments .tok-ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+pre.pygments .tok-w { color: #bbbbbb } /* Text.Whitespace */
+pre.pygments .tok-mb { color: #666666 } /* Literal.Number.Bin */
+pre.pygments .tok-mf { color: #666666 } /* Literal.Number.Float */
+pre.pygments .tok-mh { color: #666666 } /* Literal.Number.Hex */
+pre.pygments .tok-mi { color: #666666 } /* Literal.Number.Integer */
+pre.pygments .tok-mo { color: #666666 } /* Literal.Number.Oct */
+pre.pygments .tok-sa { color: #BA2121 } /* Literal.String.Affix */
+pre.pygments .tok-sb { color: #BA2121 } /* Literal.String.Backtick */
+pre.pygments .tok-sc { color: #BA2121 } /* Literal.String.Char */
+pre.pygments .tok-dl { color: #BA2121 } /* Literal.String.Delimiter */
+pre.pygments .tok-sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+pre.pygments .tok-s2 { color: #BA2121 } /* Literal.String.Double */
+pre.pygments .tok-se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+pre.pygments .tok-sh { color: #BA2121 } /* Literal.String.Heredoc */
+pre.pygments .tok-si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+pre.pygments .tok-sx { color: #008000 } /* Literal.String.Other */
+pre.pygments .tok-sr { color: #A45A77 } /* Literal.String.Regex */
+pre.pygments .tok-s1 { color: #BA2121 } /* Literal.String.Single */
+pre.pygments .tok-ss { color: #19177C } /* Literal.String.Symbol */
+pre.pygments .tok-bp { color: #008000 } /* Name.Builtin.Pseudo */
+pre.pygments .tok-fm { color: #0000FF } /* Name.Function.Magic */
+pre.pygments .tok-vc { color: #19177C } /* Name.Variable.Class */
+pre.pygments .tok-vg { color: #19177C } /* Name.Variable.Global */
+pre.pygments .tok-vi { color: #19177C } /* Name.Variable.Instance */
+pre.pygments .tok-vm { color: #19177C } /* Name.Variable.Magic */
+pre.pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */</style><link rel="icon" type="image/x-icon" href="/stylesheets/images/favicon.ico"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"><link rel="preconnect" href="https://S2ISXITURI-dsn.algolia.net"><link rel="stylesheet" href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'><link rel="stylesheet" href='https://cdn.staticaly.com/gh/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.css'><link rel="stylesheet" href="stylesheets/kb.css"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="How to integrate Kill Bill and Stripe end-to-end for a Monthly Subscription"></head><body data-spy="scroll" data-target="#myScrollspy" data-offset="100"><div class="loader-wrapper"><div id="loading"></div></div><header class="header sticky" id="header"><div class="header-wrapper"><div class="container-fluid"><div class="row flex-xl-nowrap justify-content-evenly"><div class="header-logo"><div class="logo"><a href="/"><img src="/stylesheets/images/logo/light-logo.svg" style="height:38px" alt="Kill Bill Docs" id="logo" height="38" width="146"></a></div><div class="switch"><input type="checkbox" aria-label="Search" name="theme-toggle" id="theme-toggle"><span class="slider round"></span></div></div><div class="nav-toggler sidebar-toggler"><svg class="hamburger" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 7C20.75 7.41421 20.4142 7.75 20 7.75L4 7.75C3.58579 7.75 3.25 7.41421 3.25 7C3.25 6.58579 3.58579 6.25 4 6.25L20 6.25C20.4142 6.25 20.75 6.58579 20.75 7Z" fill=""/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 12.4142 20.4142 12.75 20 12.75L4 12.75C3.58579 12.75 3.25 12.4142 3.25 12C3.25 11.5858 3.58579 11.25 4 11.25L20 11.25C20.4142 11.25 20.75 11.5858 20.75 12Z" fill=""/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 17C20.75 17.4142 20.4142 17.75 20 17.75L4 17.75C3.58579 17.75 3.25 17.4142 3.25 17C3.25 16.5858 3.58579 16.25 4 16.25L20 16.25C20.4142 16.25 20.75 16.5858 20.75 17Z" fill=""/></svg></div><div class="header-search"><div class="search-form-wrapper"><div id="docsearch" style="height: 43px; display: flex; align-items: center; width: 100%;"></div></div></div></div></div></div></header><main class="main sidebar-show"><div class="container-fluid"><div class="row flex-xl-nowrap"><div class="sidebar-wrapper"><aside class="sidebar"><div class="sidebar__control"><svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.33316 10.6665L1.6665 5.99992L6.33316 1.33325" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><nav class="sidebar-nav"><ul class="nav navbar-nav"><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Getting Started</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li><a class="nav-link" href="/latest/what_is_kill_bill.html">What is Kill Bill?</a></li><li><a class="nav-link" href="/latest/getting_started.html">Getting Started (Installation)</a></li><li><a class="nav-link" href="/latest/quick_start_with_kaui.html">Quick Start with Kaui</a></li><li><a class="nav-link" href="/latest/quick_start_with_kb_api.html">Quick Start with the Kill Bill API</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Installation</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/stripe_plugin.html">Kill Bill + Stripe DIY</a></li><li><a class="nav-link" href="/latest/userguide_deployment.html">Going to Production</a></li><li><a class="nav-link" href="/latest/database_migrations.html">Database Migrations</a></li><li><a class="nav-link" href="/latest/PostgreSQL.html">PostgreSQL Setup</a></li><li><a class="nav-link" href="https://github.com/killbill/killbill/releases" onclick="getOutboundLink('https://github.com/killbill/killbill/releases'); return false;">Release&nbsp;Notes</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">AWS</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/how-to-set-up-a-single-tier-system.html">Single-Tier Setup</a></li><li><a class="nav-link" href="/latest/how-to-set-up-a-multi-tier-system.html">Multi-Tier Setup</a></li><li><a class="nav-link" href="/latest/how-to-set-up-a-cloud-formation-system.html">CloudFormation Setup</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/how-to-maintain-a-single-tier-system.html">Single-Tier Maintenance</a></li><li><a class="nav-link" href="/latest/how-to-maintain-a-multi-tier-system.html">Multi-Tier Maintenance</a></li><li><a class="nav-link" href="/latest/how-to-maintain-a-cloud-formation-system.html">CloudFormation Maintenance</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Manuals</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/userguide_subscription.html">Subscription&nbsp;Billing</a></li><li><a class="nav-link" href="/latest/userguide_payment.html">Payment Processing</a></li><li><a class="nav-link" href="/latest/userguide_kaui.html">Kaui, the Administrative&nbsp;UI</a></li><li><a class="nav-link" href="/latest/email-notification-plugin.html">Email Notification Plugin</a></li><li><a class="nav-link" href="/latest/custom-email-invoice-formatter.html">Custom Email Formatter</a></li><li><a class="nav-link" href="/latest/userguide_analytics.html">Analytics Plugin</a></li><li><a class="nav-link" href="/latest/userguide_configuration.html">Kill Bill&nbsp;Configuration</a></li><li><a class="nav-link" href="/latest/internationalization.html">Kill Bill&nbsp;Internationalization</a></li><li><a class="nav-link" href="/latest/migration_guide.html">Migrating to Kill Bill</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Tutorials</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plan_alignment.html">Plans Alignments</a></li><li><a class="nav-link" href="/latest/overdue.html">Overdue System</a></li><li><a class="nav-link" href="/latest/consumable_in_arrear.html">In Arrear UsageBilling</a></li><li><a class="nav-link" href="/latest/ha.html">Hierarchical Accounts</a></li><li><a class="nav-link" href="/latest/catalog-examples.html">Catalog Examples</a></li><li><a class="nav-link" href="/latest/invoice_examples.html">Invoice Examples</a></li><li><a class="nav-link" href="/latest/invoice_templates.html">Invoice Templates</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Integration</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="http://killbill.github.io/slate" onclick="getOutboundLink('http://killbill.github.io/slate'); return false;">REST API Reference</a></li><li><a class="nav-link" href="/latest/swagger_documentation.html">Swagger UI Documentation</a></li><li><a class="nav-link" href="/latest/postman.html">Postman Integration</a></li><li><a class="nav-link" href="/latest/debugging.html">Debugging</a></li><li><a class="nav-link" href="/latest/push_notifications.html">Push Notifications</a></li><li><a class="nav-link" href="/latest/kill_bill_events.html">Kill Bill Events</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Plugin Development</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_introduction.html">Plugin Introduction</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_development.html">Plugin Development</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_installation.html">Plugin Installation</a></li><li><a class="nav-link" href="/latest/plugin_use_cases.html">Special Plugin Use Cases</a></li><li><a class="nav-link" href="/latest/notification_plugin.html">Notification Plugins</a></li><li><a class="nav-link" href="/latest/payment_plugin.html">Payment Plugins</a></li><li><a class="nav-link" href="/latest/payment_control_plugin.html">Payment Control Plugins</a></li><li><a class="nav-link" href="/latest/invoice_plugin.html">Invoice Plugins</a></li><li><a class="nav-link" href="/latest/catalog_plugin.html">Catalog Plugins</a></li><li><a class="nav-link" href="/latest/entitlement_plugin.html">Entitlement Plugins</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Operational Guides</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/deploy_to_kubernetes.html">Kubernetes (K8s) Deployment</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/user_management.html">Users, Roles, and Permissions</a></li><li><a class="nav-link" href="/latest/plugin_management.html">Plugin Management</a></li><li><a class="nav-link" href="/latest/aws-tools.html">AWS Analytics Tools</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Client Libraries</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/java_client.html">Java</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-ruby" onclick="getOutboundLink('http://github.com/killbill/killbill-client-ruby'); return false;">Ruby</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-php" onclick="getOutboundLink('http://github.com/killbill/killbill-client-php'); return false;">PHP</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-js" onclick="getOutboundLink('http://github.com/killbill/killbill-client-js'); return false;">Node.js</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-python" onclick="getOutboundLink('http://github.com/killbill/killbill-client-python'); return false;">Python</a></li><li><a class="nav-link" href="http://github.com/killbill/kbcli" onclick="getOutboundLink('http://github.com/killbill/kbcli'); return false;">KillBill Go </a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">About Kill Bill</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/demo.html">Demo</a></li><li><a class="nav-link" href="/latest/features.html">Features List</a></li><li><a class="nav-link" href="/latest/faq.html">Technical FAQs</a></li><li><a class="nav-link" href="/latest/Kill-Bill-Glossary.html">Glossary</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Internal</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/internal_design.html">Internal Design</a></li><li><a class="nav-link" href="/latest/entitlement_subsystem.html">Entitlement Subsystem</a></li><li><a class="nav-link" href="/latest/invoice_subsystem.html">Invoice Subsystem</a></li><li><a class="nav-link" href="/latest/development.html">Development Environment</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">References</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="https://github.com/killbill/killbill-docs/tree/v3/swagger" onclick="getOutboundLink('https://github.com/killbill/killbill-docs/tree/v3/swagger'); return false;">Swagger&nbsp;API Schema</a></li><li><a class="nav-link" href="/latest/catalog.xsd">Catalog XSD Reference</a></li><li><a class="nav-link" href="/latest/overdue.xsd">Overdue XSD Reference</a></li></ul></li></ul></nav><script src="https://code.jquery.com/jquery-3.6.1.min.js"></script><script>
+  let $ = jQuery;
+  $('.sidebar-nav .icon-title').on('click', function (e) {
+    e.preventDefault();
+    $('.sidebar-nav .nav.navbar-nav .nav.navbar-nav').slideUp(200);
+    $('.sidebar-nav > .navbar-nav > li').removeClass('open');
+
+    if($(this).next().is(':visible')){
+      $('.sidebar-nav .nav.navbar-nav .nav.navbar-nav').slideUp(200);
+      $('.sidebar-nav > .navbar-nav > li').removeClass('open');
+    } else {
+      $(this).parent().addClass('open');
+      $(this).next().slideDown(200);
+    }
+  });
+
+  let pageURL = $(location).attr("href");
+  pageURL = pageURL.includes('.html') ? pageURL : pageURL + '.html';
+  $('.nav-link').each(function() {
+    if (pageURL.toLowerCase().includes($(this).attr('href').toLowerCase())) {
+      $(this).parent().addClass('list-item-active');
+      $(this).parent().parent().addClass('active-list');
+      $(this).parent().parent().prev().addClass('bd-link-active-wrap');
+    }
+  });
+</script><a class="doclink" href="mailto:support@killbill.io">Report a doc problem</a></aside></div><div class="article-container"><div class="center-content"><div class="main-wrapper"><article class="content-wrapper"><div class="banner"><h1>How to integrate Kill Bill and Stripe end-to-end for a Monthly Subscription</h1></div><div id="content"><div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creating a recurring billing solution can be difficult, and there are many challenges in the way.  Customer management, automatic invoicing, secure payments, and failed transaction management are some common difficulties a business with a recurring subscription model may face.</p>
+</div>
+<div class="paragraph">
+<p>In addition, many existing SaaS solutions force vendor lock-in on their customers, meaning that you don&#8217;t own the entirety of your data. You are also limited by the features the provider offers for your pricing schemes, as opposed to building your own.</p>
+</div>
+<div class="ulist">
+<div class="title">Kill Bill solves these challenges by:</div>
+<ul>
+<li>
+<p>Operating from an entirely Open Source model&#8201;&#8212;&#8201;whether it runs locally or in the cloud, you own the subscription data, as opposed to being limited to the types of reports the SaaS solution provides</p>
+</li>
+<li>
+<p>Integrating with providers like Stripe for payments, which will cover PCI complexity while you own the recurring billing logic</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tutorial">Tutorial</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this tutorial, we will guide you step-by-step on how to integrate Kill Bill and Stripe end-to-end for a monthly subscription model. We provide Docker as well as Non-Docker instructions as applicable.</p>
+</div>
+<div class="sect2">
+<h3 id="_step_1_install_kill_bill">Step 1: Install Kill Bill</h3>
+<div class="paragraph">
+<p>Kill Bill can be installed via Docker or in a Tomcat server.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_docker">Using Docker</h4>
+<div class="paragraph">
+<p>Ensure that you have Kill Bill, Kaui, and the database set up and running in Docker containers as explained in the <a href="https://docs.killbill.io/latest/getting_started.html#_docker">Getting Started</a> document.</p>
+</div>
+<div class="paragraph">
+<p>You should be able to access the following:</p>
+</div>
+<div class="ulist">
+<div class="title">Kaui UI</div>
+<ul>
+<li>
+<p>http://127.0.0.1:9090 (username/password: admin/password)</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Kill Bill API</div>
+<ul>
+<li>
+<p>http://127.0.0.1:8080</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_tomcat">Using Tomcat</h4>
+<div class="paragraph">
+<p>Ensure that you have Kill Bill, Kaui, and the database set up in Tomcat as explained in the <a href="https://docs.killbill.io/latest/getting_started.html#_tomcat">Getting Started</a> document.</p>
+</div>
+<div class="paragraph">
+<p>You should be able to access the following:</p>
+</div>
+<div class="ulist">
+<div class="title">Kill Bill API</div>
+<ul>
+<li>
+<p>http://127.0.0.1:8080</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Kaui UI</div>
+<ul>
+<li>
+<p>http://127.0.0.1:9090 (username/password: admin/password)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_2_add_a_new_tenant">Step 2:  Add a new tenant</h3>
+<div class="paragraph">
+<p>Now, we need to add a new tenant.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>At the top of the navigation panel, hover over the gear icon and select 'TENANTS.'</p>
+</li>
+<li>
+<p>Select the '+' icon next to Kaui Tenants.</p>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<div class="title">Enter the following information for the purpose of this tutorial:</div>
+<ul>
+<li>
+<p>Name: bob</p>
+</li>
+<li>
+<p>API Key: bob</p>
+</li>
+<li>
+<p>API Secret: lazar</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_3_create_a_new_sports_product">Step 3:  Create a new Sports product</h3>
+<div class="paragraph">
+<p>After creating a new tenant, you should be brought to the following screen:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_tenant.png" alt="stripe integration tenant">
+</div>
+</div>
+<div class="paragraph">
+<p>At the bottom of the screen, select the '+' icon next to Existing Plans to create a new product.</p>
+</div>
+<div class="paragraph">
+<p>For the purpose of this tutorial, enter the following:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_new_product.png" alt="stripe integration new product">
+</div>
+</div>
+<div class="paragraph">
+<p>Click 'Save' and you should see the following:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_existing_plans.png" alt="stripe integration existing plans">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_4_create_a_stripe_account">Step 4:  Create a Stripe account</h3>
+<div class="paragraph">
+<p>Create an account at <a href="https://www.stripe.com" class="bare">https://www.stripe.com</a>.  Once you have logged in, give your account a name by clicking on <strong>Add a name</strong> under the <strong>Unnamed</strong> account drop-down in the upper left-hand corner.  A name is required for the Stripe integration.</p>
+</div>
+<div class="paragraph">
+<p>Next, in the left panel, navigate to <strong>Developers &gt; API Keys</strong> and click on <strong>Reveal test key token</strong>.  You will need these keys once we configure the Stripe plugin for Kill Bill.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_5_install_the_stripe_plugin">Step 5:  Install the Stripe Plugin</h3>
+<div class="paragraph">
+<p>In Kaui, hover over the plug icon at the top of the page and click on 'KPM (Kill Bill Plugin Manager).'</p>
+</div>
+<div class="paragraph">
+<p>Select "Install New Plugin" in the upper-right corner.</p>
+</div>
+<div class="paragraph">
+<p>In the list of plugins, find "stripe" and click on the cloud button to install.</p>
+</div>
+<div class="paragraph">
+<p>After a few moments, refresh the <code>/kpm</code> page.  You should see the stripe-plugin listed with a status of 'STOPPED.'  Click the play button to start it.  If you refresh again, you should find the stripe-plugin listed with a status of 'RUNNING.'</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_plugin_running.png" alt="stripe integration plugin running">
+</div>
+</div>
+<div class="paragraph">
+<p>If you are not using Docker, you will also need to create the <strong>Stripe database tables</strong> by running <a href="https://github.com/killbill/killbill-stripe-plugin/blob/master/src/main/resources/ddl.sql">this</a> DDL in the Kill Bill database.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_6_configure_the_stripe_plugin_with_your_api_keys">Step 6:  Configure the Stripe Plugin with your API Keys</h3>
+<div class="paragraph">
+<p>In Kaui, at the top of the screen, hover over the gear icon and select 'TENANTS.'</p>
+</div>
+<div class="paragraph">
+<p>Click 'bob.'</p>
+</div>
+<div class="paragraph">
+<p>At the bottom of the screen, navigate to the tab labeled 'Plugin Config.'</p>
+</div>
+<div class="paragraph">
+<p>For Plugin name, select "stripe" from the drop-down menu.</p>
+</div>
+<div class="paragraph">
+<p>In the configuration, enter the following and paste your publishable and secret keys you obtained from Stripe in Step 4.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java"><span></span><span class="tok-n">org</span><span class="tok-p">.</span><span class="tok-na">killbill</span><span class="tok-p">.</span><span class="tok-na">billing</span><span class="tok-p">.</span><span class="tok-na">plugin</span><span class="tok-p">.</span><span class="tok-na">stripe</span><span class="tok-p">.</span><span class="tok-na">apiKey</span><span class="tok-o">=</span><span class="tok-n">sk_test_XXXX</span>
+<span class="tok-n">org</span><span class="tok-p">.</span><span class="tok-na">killbill</span><span class="tok-p">.</span><span class="tok-na">billing</span><span class="tok-p">.</span><span class="tok-na">plugin</span><span class="tok-p">.</span><span class="tok-na">stripe</span><span class="tok-p">.</span><span class="tok-na">publicKey</span><span class="tok-o">=</span><span class="tok-n">pk_test_XXXX</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_7_install_and_run_the_stripe_demo">Step 7:  Install and run the Stripe Demo</h3>
+<div class="paragraph">
+<p>The Stripe demo application can be installed via its Docker image or manually by cloning the code.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_docker_2">Using Docker</h4>
+<div class="paragraph">
+<p>Open a command/terminal window and run the following command to pull the docker image for the Stripe demo application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>docker<span class="tok-w"> </span>pull<span class="tok-w"> </span>killbill/stripe-demo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, run the stripe-demo application using your Stripe publishable key as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>docker<span class="tok-w"> </span>run<span class="tok-w"> </span>-e<span class="tok-w"> </span><span class="tok-nv">PUBLISHABLE_KEY</span><span class="tok-o">=</span>pk_test_XXX<span class="tok-w"> </span>-e<span class="tok-w"> </span><span class="tok-nv">KB_URL</span><span class="tok-o">=</span>http://host.docker.internal:8080<span class="tok-w"> </span>-ti<span class="tok-w"> </span>-p4567:4567<span class="tok-w"> </span>killbill/stripe-demo</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manually_by_cloning_the_code">Manually by cloning the code</h4>
+<div class="paragraph">
+<p>Open a terminal and clone the killbill-stripe demo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>$<span class="tok-w"> </span>git<span class="tok-w"> </span>clone<span class="tok-w"> </span>https://github.com/killbill/killbill-stripe-demo.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, use RVM to install Ruby (Ruby 2.1+ or JRuby 1.7.20+ is recommended).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>$<span class="tok-w"> </span>gpg<span class="tok-w"> </span>--keyserver<span class="tok-w"> </span>hkp://keys.gnupg.net<span class="tok-w"> </span>--recv-keys<span class="tok-w"> </span>409B6B1796C275462A1703113804BB82D39DC0E3
+<span class="tok-se">\c</span>url<span class="tok-w"> </span>-sSL<span class="tok-w"> </span>https://get.rvm.io<span class="tok-w"> </span><span class="tok-p">|</span><span class="tok-w"> </span>bash<span class="tok-w"> </span>-s<span class="tok-w"> </span>stable<span class="tok-w"> </span>--ruby</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On Windows machines, you can use <a href="https://rubyinstaller.org/">RubyInstaller</a> to install Ruby.</p>
+</div>
+<div class="paragraph">
+<p>Once Ruby is installed, install the dependencies by running in the parent folder:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>$<span class="tok-w"> </span>gem<span class="tok-w"> </span>install<span class="tok-w"> </span>bundler
+$<span class="tok-w"> </span>bundle<span class="tok-w"> </span>install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, run the stripe demo application using your Stripe publishable key as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span><span class="tok-nv">PUBLISHABLE_KEY</span><span class="tok-o">=</span>pk_test_XXX<span class="tok-w"> </span>ruby<span class="tok-w"> </span>app.rb</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_8_test_the_demo_application">Step 8: Test the demo application</h3>
+<div class="paragraph">
+<p>In your browser, navigate to http://localhost:4567/. This displays the following screen:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_demo_app_home.png" alt="stripe integration demo app home">
+</div>
+</div>
+<div class="paragraph">
+<p>Enter dummy data (4242 4242 4242 4242 as the credit card number, any three digit CVC, any expiry date in the future, and any zip code) and click the  <strong>Buy via Stripe Elements</strong> button. This displays the following confirmation screen:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_confirmation_page.png" alt="stripe integration confirmation page">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_9_what_just_happened">Step 9:  What just happened?</h3>
+<div class="paragraph">
+<p>After we complete the checkout process with Stripe, the card has been tokenized, or intercepted and replaced with a surrogate token ID.  If you visit to the Stripe Dashboard (<a href="https://dashboard.stripe.com" class="bare">https://dashboard.stripe.com</a>), you should be able to navigate to the Payments page in the left-hand panel to see a succeeded Kill Bill charge for $10.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_tokenization.png" alt="stripe integration tokenization">
+</div>
+</div>
+<div class="paragraph">
+<p>In Kaui, navigate to the <code>/accounts</code> page to see the newly created Kill Bill account, and select it:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_kbaccount.png" alt="stripe integration kbaccount">
+</div>
+</div>
+<div class="paragraph">
+<p>You will see that a new payment method has been associated with this account by expanding 'Payment Methods' in the lower left-hand corner.  A Customer object is also created in Stripe (see <code>customer_id</code>), so the token associated with this account can be re-used.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_payment_methods.png" alt="stripe integration payment methods">
+</div>
+</div>
+<div class="paragraph">
+<p>If you select 'Subscriptions' at the top of the page, you will see our newly creeated John Doe account now has a monthly subscription for our 'Sports' product, at a value of $10.00.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_subscription_bundles.png" alt="stripe integration subscription bundles">
+</div>
+</div>
+<div class="paragraph">
+<p>Navigating to the 'Payments' tab at the top of the page, you will also see that a payment was processed with an AUTH AMOUNT of $10.00.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/tutorials/stripe_integration_payments.png" alt="stripe integration payments">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion">Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now, you should have a complete working setup of a monthly subscription model integrated with Kill Bill and Stripe.</p>
+</div>
+<div class="ulist">
+<div class="title">Try playing around with the demo project to fit your needs, or check out the reference docs for more information:</div>
+<ul>
+<li>
+<p>API reference (<a href="https://killbill.github.io/slate/" class="bare">https://killbill.github.io/slate/</a>)</p>
+</li>
+<li>
+<p>Production deployment (<a href="https://docs.killbill.io/latest/aws.html" class="bare">https://docs.killbill.io/latest/aws.html</a>)</p>
+</li>
+<li>
+<p>Community forum for help (<a href="https://groups.google.com/forum/#!forum/killbilling-users" class="bare">https://groups.google.com/forum/#!forum/killbilling-users</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div class="bottom-nav-links"><a href="#" id="prev-nav-link" class="bottom-nav-link card prev"><span class="arrow-icon left"><svg class="i-arrow" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.19526 1.02876C4.45561 0.768409 4.87772 0.768409 5.13807 1.02876C5.39842 1.28911 5.39842 1.71122 5.13807 1.97157L2.27614 4.8335H11.3333C11.7015 4.8335 12 5.13197 12 5.50016C12 5.86835 11.7015 6.16683 11.3333 6.16683H2.27614L5.13807 9.02876C5.39842 9.28911 5.39842 9.71122 5.13807 9.97157C4.87772 10.2319 4.45561 10.2319 4.19526 9.97157L0.195261 5.97157C-0.0650883 5.71122 -0.0650883 5.28911 0.195261 5.02876L4.19526 1.02876Z" fill=""/></svg><span class="prev-text">Previous</span></span><span id="prev-navigator" class="bottom-nav-text">Prev</span>                               </a><a href="#" id="next-nav-link" class="bottom-nav-link card next"><span class="arrow-icon"><span class="next-text">Next</span><svg class="i-arrow icon-left" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.19526 1.02876C4.45561 0.768409 4.87772 0.768409 5.13807 1.02876C5.39842 1.28911 5.39842 1.71122 5.13807 1.97157L2.27614 4.8335H11.3333C11.7015 4.8335 12 5.13197 12 5.50016C12 5.86835 11.7015 6.16683 11.3333 6.16683H2.27614L5.13807 9.02876C5.39842 9.28911 5.39842 9.71122 5.13807 9.97157C4.87772 10.2319 4.45561 10.2319 4.19526 9.97157L0.195261 5.97157C-0.0650883 5.71122 -0.0650883 5.28911 0.195261 5.02876L4.19526 1.02876Z" fill=""/></svg></span><span id="next-navigator" class="bottom-nav-text">Next</span></a></div></article></div><div class="bd-links-wrapper"><nav class="bd-links toc right-side-menu" id="myScrollspy" data-toggle="toc"></nav></div></div></div></div></div></main><script src="https://cdn.staticaly.com/gh/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.js"></script><script type="module" src="/javascripts/kb.js"></script><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script><script>docsearch({apiKey: '3ef227e7fd5e2e1a3fffd880484934bf', container: '#docsearch', appId: 'S2ISXITURI', indexName: 'killbill'});</script></body></html>

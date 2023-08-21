@@ -1,0 +1,1183 @@
+<!DOCTYPE html><html lang="en"><head><title>Kill Bill Analytics Guide</title><style>pre.pygments .hll { background-color: #ffffcc }
+pre.pygments { background: #f8f8f8; }
+pre.pygments .tok-c { color: #3D7B7B; font-style: italic } /* Comment */
+pre.pygments .tok-err { border: 1px solid #FF0000 } /* Error */
+pre.pygments .tok-k { color: #008000; font-weight: bold } /* Keyword */
+pre.pygments .tok-o { color: #666666 } /* Operator */
+pre.pygments .tok-ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+pre.pygments .tok-cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+pre.pygments .tok-cp { color: #9C6500 } /* Comment.Preproc */
+pre.pygments .tok-cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+pre.pygments .tok-c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+pre.pygments .tok-cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+pre.pygments .tok-gd { color: #A00000 } /* Generic.Deleted */
+pre.pygments .tok-ge { font-style: italic } /* Generic.Emph */
+pre.pygments .tok-gr { color: #E40000 } /* Generic.Error */
+pre.pygments .tok-gh { color: #000080; font-weight: bold } /* Generic.Heading */
+pre.pygments .tok-gi { color: #008400 } /* Generic.Inserted */
+pre.pygments .tok-go { color: #717171 } /* Generic.Output */
+pre.pygments .tok-gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+pre.pygments .tok-gs { font-weight: bold } /* Generic.Strong */
+pre.pygments .tok-gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+pre.pygments .tok-gt { color: #0044DD } /* Generic.Traceback */
+pre.pygments .tok-kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+pre.pygments .tok-kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+pre.pygments .tok-kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+pre.pygments .tok-kp { color: #008000 } /* Keyword.Pseudo */
+pre.pygments .tok-kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+pre.pygments .tok-kt { color: #B00040 } /* Keyword.Type */
+pre.pygments .tok-m { color: #666666 } /* Literal.Number */
+pre.pygments .tok-s { color: #BA2121 } /* Literal.String */
+pre.pygments .tok-na { color: #687822 } /* Name.Attribute */
+pre.pygments .tok-nb { color: #008000 } /* Name.Builtin */
+pre.pygments .tok-nc { color: #0000FF; font-weight: bold } /* Name.Class */
+pre.pygments .tok-no { color: #880000 } /* Name.Constant */
+pre.pygments .tok-nd { color: #AA22FF } /* Name.Decorator */
+pre.pygments .tok-ni { color: #717171; font-weight: bold } /* Name.Entity */
+pre.pygments .tok-ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+pre.pygments .tok-nf { color: #0000FF } /* Name.Function */
+pre.pygments .tok-nl { color: #767600 } /* Name.Label */
+pre.pygments .tok-nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+pre.pygments .tok-nt { color: #008000; font-weight: bold } /* Name.Tag */
+pre.pygments .tok-nv { color: #19177C } /* Name.Variable */
+pre.pygments .tok-ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+pre.pygments .tok-w { color: #bbbbbb } /* Text.Whitespace */
+pre.pygments .tok-mb { color: #666666 } /* Literal.Number.Bin */
+pre.pygments .tok-mf { color: #666666 } /* Literal.Number.Float */
+pre.pygments .tok-mh { color: #666666 } /* Literal.Number.Hex */
+pre.pygments .tok-mi { color: #666666 } /* Literal.Number.Integer */
+pre.pygments .tok-mo { color: #666666 } /* Literal.Number.Oct */
+pre.pygments .tok-sa { color: #BA2121 } /* Literal.String.Affix */
+pre.pygments .tok-sb { color: #BA2121 } /* Literal.String.Backtick */
+pre.pygments .tok-sc { color: #BA2121 } /* Literal.String.Char */
+pre.pygments .tok-dl { color: #BA2121 } /* Literal.String.Delimiter */
+pre.pygments .tok-sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+pre.pygments .tok-s2 { color: #BA2121 } /* Literal.String.Double */
+pre.pygments .tok-se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+pre.pygments .tok-sh { color: #BA2121 } /* Literal.String.Heredoc */
+pre.pygments .tok-si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+pre.pygments .tok-sx { color: #008000 } /* Literal.String.Other */
+pre.pygments .tok-sr { color: #A45A77 } /* Literal.String.Regex */
+pre.pygments .tok-s1 { color: #BA2121 } /* Literal.String.Single */
+pre.pygments .tok-ss { color: #19177C } /* Literal.String.Symbol */
+pre.pygments .tok-bp { color: #008000 } /* Name.Builtin.Pseudo */
+pre.pygments .tok-fm { color: #0000FF } /* Name.Function.Magic */
+pre.pygments .tok-vc { color: #19177C } /* Name.Variable.Class */
+pre.pygments .tok-vg { color: #19177C } /* Name.Variable.Global */
+pre.pygments .tok-vi { color: #19177C } /* Name.Variable.Instance */
+pre.pygments .tok-vm { color: #19177C } /* Name.Variable.Magic */
+pre.pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */</style><link rel="icon" type="image/x-icon" href="/stylesheets/images/favicon.ico"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"><link rel="preconnect" href="https://S2ISXITURI-dsn.algolia.net"><link rel="stylesheet" href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'><link rel="stylesheet" href='https://cdn.staticaly.com/gh/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.css'><link rel="stylesheet" href="stylesheets/kb.css"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Kill Bill Analytics Guide"></head><body data-spy="scroll" data-target="#myScrollspy" data-offset="100"><div class="loader-wrapper"><div id="loading"></div></div><header class="header sticky" id="header"><div class="header-wrapper"><div class="container-fluid"><div class="row flex-xl-nowrap justify-content-evenly"><div class="header-logo"><div class="logo"><a href="/"><img src="/stylesheets/images/logo/light-logo.svg" style="height:38px" alt="Kill Bill Docs" id="logo" height="38" width="146"></a></div><div class="switch"><input type="checkbox" aria-label="Search" name="theme-toggle" id="theme-toggle"><span class="slider round"></span></div></div><div class="nav-toggler sidebar-toggler"><svg class="hamburger" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 7C20.75 7.41421 20.4142 7.75 20 7.75L4 7.75C3.58579 7.75 3.25 7.41421 3.25 7C3.25 6.58579 3.58579 6.25 4 6.25L20 6.25C20.4142 6.25 20.75 6.58579 20.75 7Z" fill=""/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 12.4142 20.4142 12.75 20 12.75L4 12.75C3.58579 12.75 3.25 12.4142 3.25 12C3.25 11.5858 3.58579 11.25 4 11.25L20 11.25C20.4142 11.25 20.75 11.5858 20.75 12Z" fill=""/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 17C20.75 17.4142 20.4142 17.75 20 17.75L4 17.75C3.58579 17.75 3.25 17.4142 3.25 17C3.25 16.5858 3.58579 16.25 4 16.25L20 16.25C20.4142 16.25 20.75 16.5858 20.75 17Z" fill=""/></svg></div><div class="header-search"><div class="search-form-wrapper"><div id="docsearch" style="height: 43px; display: flex; align-items: center; width: 100%;"></div></div></div></div></div></div></header><main class="main sidebar-show"><div class="container-fluid"><div class="row flex-xl-nowrap"><div class="sidebar-wrapper"><aside class="sidebar"><div class="sidebar__control"><svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.33316 10.6665L1.6665 5.99992L6.33316 1.33325" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><nav class="sidebar-nav"><ul class="nav navbar-nav"><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Getting Started</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li><a class="nav-link" href="/latest/what_is_kill_bill.html">What is Kill Bill?</a></li><li><a class="nav-link" href="/latest/getting_started.html">Getting Started (Installation)</a></li><li><a class="nav-link" href="/latest/quick_start_with_kaui.html">Quick Start with Kaui</a></li><li><a class="nav-link" href="/latest/quick_start_with_kb_api.html">Quick Start with the Kill Bill API</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Installation</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/stripe_plugin.html">Kill Bill + Stripe DIY</a></li><li><a class="nav-link" href="/latest/userguide_deployment.html">Going to Production</a></li><li><a class="nav-link" href="/latest/database_migrations.html">Database Migrations</a></li><li><a class="nav-link" href="/latest/PostgreSQL.html">PostgreSQL Setup</a></li><li><a class="nav-link" href="https://github.com/killbill/killbill/releases" onclick="getOutboundLink('https://github.com/killbill/killbill/releases'); return false;">Release&nbsp;Notes</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">AWS</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/how-to-set-up-a-single-tier-system.html">Single-Tier Setup</a></li><li><a class="nav-link" href="/latest/how-to-set-up-a-multi-tier-system.html">Multi-Tier Setup</a></li><li><a class="nav-link" href="/latest/how-to-set-up-a-cloud-formation-system.html">CloudFormation Setup</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/how-to-maintain-a-single-tier-system.html">Single-Tier Maintenance</a></li><li><a class="nav-link" href="/latest/how-to-maintain-a-multi-tier-system.html">Multi-Tier Maintenance</a></li><li><a class="nav-link" href="/latest/how-to-maintain-a-cloud-formation-system.html">CloudFormation Maintenance</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Manuals</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/userguide_subscription.html">Subscription&nbsp;Billing</a></li><li><a class="nav-link" href="/latest/userguide_payment.html">Payment Processing</a></li><li><a class="nav-link" href="/latest/userguide_kaui.html">Kaui, the Administrative&nbsp;UI</a></li><li><a class="nav-link" href="/latest/email-notification-plugin.html">Email Notification Plugin</a></li><li><a class="nav-link" href="/latest/custom-email-invoice-formatter.html">Custom Email Formatter</a></li><li><a class="nav-link" href="/latest/userguide_analytics.html">Analytics Plugin</a></li><li><a class="nav-link" href="/latest/userguide_configuration.html">Kill Bill&nbsp;Configuration</a></li><li><a class="nav-link" href="/latest/internationalization.html">Kill Bill&nbsp;Internationalization</a></li><li><a class="nav-link" href="/latest/migration_guide.html">Migrating to Kill Bill</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Tutorials</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plan_alignment.html">Plans Alignments</a></li><li><a class="nav-link" href="/latest/overdue.html">Overdue System</a></li><li><a class="nav-link" href="/latest/consumable_in_arrear.html">In Arrear UsageBilling</a></li><li><a class="nav-link" href="/latest/ha.html">Hierarchical Accounts</a></li><li><a class="nav-link" href="/latest/catalog-examples.html">Catalog Examples</a></li><li><a class="nav-link" href="/latest/invoice_examples.html">Invoice Examples</a></li><li><a class="nav-link" href="/latest/invoice_templates.html">Invoice Templates</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Integration</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="http://killbill.github.io/slate" onclick="getOutboundLink('http://killbill.github.io/slate'); return false;">REST API Reference</a></li><li><a class="nav-link" href="/latest/swagger_documentation.html">Swagger UI Documentation</a></li><li><a class="nav-link" href="/latest/postman.html">Postman Integration</a></li><li><a class="nav-link" href="/latest/debugging.html">Debugging</a></li><li><a class="nav-link" href="/latest/push_notifications.html">Push Notifications</a></li><li><a class="nav-link" href="/latest/kill_bill_events.html">Kill Bill Events</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Plugin Development</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_introduction.html">Plugin Introduction</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_development.html">Plugin Development</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_installation.html">Plugin Installation</a></li><li><a class="nav-link" href="/latest/plugin_use_cases.html">Special Plugin Use Cases</a></li><li><a class="nav-link" href="/latest/notification_plugin.html">Notification Plugins</a></li><li><a class="nav-link" href="/latest/payment_plugin.html">Payment Plugins</a></li><li><a class="nav-link" href="/latest/payment_control_plugin.html">Payment Control Plugins</a></li><li><a class="nav-link" href="/latest/invoice_plugin.html">Invoice Plugins</a></li><li><a class="nav-link" href="/latest/catalog_plugin.html">Catalog Plugins</a></li><li><a class="nav-link" href="/latest/entitlement_plugin.html">Entitlement Plugins</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Operational Guides</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/deploy_to_kubernetes.html">Kubernetes (K8s) Deployment</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/user_management.html">Users, Roles, and Permissions</a></li><li><a class="nav-link" href="/latest/plugin_management.html">Plugin Management</a></li><li><a class="nav-link" href="/latest/aws-tools.html">AWS Analytics Tools</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Client Libraries</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/java_client.html">Java</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-ruby" onclick="getOutboundLink('http://github.com/killbill/killbill-client-ruby'); return false;">Ruby</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-php" onclick="getOutboundLink('http://github.com/killbill/killbill-client-php'); return false;">PHP</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-js" onclick="getOutboundLink('http://github.com/killbill/killbill-client-js'); return false;">Node.js</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-python" onclick="getOutboundLink('http://github.com/killbill/killbill-client-python'); return false;">Python</a></li><li><a class="nav-link" href="http://github.com/killbill/kbcli" onclick="getOutboundLink('http://github.com/killbill/kbcli'); return false;">KillBill Go </a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">About Kill Bill</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/demo.html">Demo</a></li><li><a class="nav-link" href="/latest/features.html">Features List</a></li><li><a class="nav-link" href="/latest/faq.html">Technical FAQs</a></li><li><a class="nav-link" href="/latest/Kill-Bill-Glossary.html">Glossary</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Internal</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/internal_design.html">Internal Design</a></li><li><a class="nav-link" href="/latest/entitlement_subsystem.html">Entitlement Subsystem</a></li><li><a class="nav-link" href="/latest/invoice_subsystem.html">Invoice Subsystem</a></li><li><a class="nav-link" href="/latest/development.html">Development Environment</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">References</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="https://github.com/killbill/killbill-docs/tree/v3/swagger" onclick="getOutboundLink('https://github.com/killbill/killbill-docs/tree/v3/swagger'); return false;">Swagger&nbsp;API Schema</a></li><li><a class="nav-link" href="/latest/catalog.xsd">Catalog XSD Reference</a></li><li><a class="nav-link" href="/latest/overdue.xsd">Overdue XSD Reference</a></li></ul></li></ul></nav><script src="https://code.jquery.com/jquery-3.6.1.min.js"></script><script>
+  let $ = jQuery;
+  $('.sidebar-nav .icon-title').on('click', function (e) {
+    e.preventDefault();
+    $('.sidebar-nav .nav.navbar-nav .nav.navbar-nav').slideUp(200);
+    $('.sidebar-nav > .navbar-nav > li').removeClass('open');
+
+    if($(this).next().is(':visible')){
+      $('.sidebar-nav .nav.navbar-nav .nav.navbar-nav').slideUp(200);
+      $('.sidebar-nav > .navbar-nav > li').removeClass('open');
+    } else {
+      $(this).parent().addClass('open');
+      $(this).next().slideDown(200);
+    }
+  });
+
+  let pageURL = $(location).attr("href");
+  pageURL = pageURL.includes('.html') ? pageURL : pageURL + '.html';
+  $('.nav-link').each(function() {
+    if (pageURL.toLowerCase().includes($(this).attr('href').toLowerCase())) {
+      $(this).parent().addClass('list-item-active');
+      $(this).parent().parent().addClass('active-list');
+      $(this).parent().parent().prev().addClass('bd-link-active-wrap');
+    }
+  });
+</script><a class="doclink" href="mailto:support@killbill.io">Report a doc problem</a></aside></div><div class="article-container"><div class="center-content"><div class="main-wrapper"><article class="content-wrapper"><div class="banner"><h1>Kill Bill Analytics Guide</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/killbill/killbill-analytics-plugin">Kill Bill analytics plugin</a> provides business analytics and reporting capabilities. You can use this plugin to create reports and view them via Kaui. Not only that, it allows creating reports against external databases as well. This document explains how to install and use this plugin.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites">Prerequisites</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure that you have Kill Bill, Kaui, and the database set up as explained in the <a href="https://docs.killbill.io/latest/getting_started.html">Getting Started Guide</a>.</p>
+</li>
+<li>
+<p>Ensure that you have <a href="https://curl.haxx.se/">cURL</a> installed. If you are on Windows, we recommend that you use <a href="https://git-scm.com/download/win">Git Bash</a> to run the <code>cURL</code> commands.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="components-analytics-overview">Analytics Plugin Internals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kill Bill maintains a separate <a href="#analytics_tables">reporting database</a> for analytics purposes. The tables in this database are meant to be used as building blocks for reports. Unlike other tables in the system, this set of tables is stable and potentially changes only between major revisions of Kill Bill. This database is kept current in realtime.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://github.com/killbill/killbill-analytics-plugin">analytics plugin</a> is a <a href="https://docs.killbill.io/latest/notification_plugin.html">notification plugin</a>. It listens to <a href="https://docs.killbill.io/latest/kill_bill_events.html">events</a> generated by Kill Bill when any system change occurs and rebuilds the analytics tables upon receipt of events. So, for example, if a new account is created, Kill Bill triggers an <code>ACCOUNT_CREATION</code> event. The analytics plugin listens to this event and on receipt updates the analytics tables based on the Kill Bill tables.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_plugin_installation">Plugin Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A plugin can be installed either via <a href="https://docs.killbill.io/latest/userguide_kaui.html"><em>Kaui</em></a> or <a href="https://github.com/killbill/killbill-cloud/blob/master/kpm"><em>KPM</em></a>. In order to install a plugin via Kaui, please refer to the <a href="https://docs.killbill.io/latest/plugin_installation.html#_installing_via_kaui"><em>Plugin Installation Instructions</em></a> document. In order to install a plugin via kpm, you may follow the steps given below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure that you have kpm installed as explained <a href="https://github.com/killbill/killbill-cloud/tree/master/kpm#kpm-installation">here</a>.</p>
+</li>
+<li>
+<p>Install the plugin using the following <code>kpm</code> command (Replace <code>&lt;path_to_install_plugin&gt;</code> with the path where you want to install the plugin. This path should match the path specified by the <code>org.killbill.osgi.bundle.install.dir</code> property in the  <a href="https://docs.killbill.io/latest/userguide_configuration.html#_configuration_properties_table"><em>Kill Bill Configuration</em></a>):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>kpm<span class="tok-w"> </span>install_java_plugin<span class="tok-w"> </span>analytics<span class="tok-w"> </span>--destination<span class="tok-o">=</span>&lt;path_to_install_plugin&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verify that the plugin is installed properly. This can be done by ensuring that the plugin JAR is present at the <code>path_to_install_plugin</code> specified in the previous step. Alternatively, you can also open <a href="https://docs.killbill.io/latest/userguide_kaui.html">Kaui</a>, hover over the plug icon and click on <code>analytics</code>. This should display the following screen:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://github.com/killbill/killbill-docs/raw/v3/userguide/assets/img/analytics-plugin/analytics-plugin-in-kaui.png" alt="analytics plugin in kaui">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If you would like to make changes to the plugin, you can clone the plugin code, build and deploy it as explained <a href="https://github.com/killbill/killbill-analytics-plugin">here</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_database_configuration">Database Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As mentioned earlier, the analytics plugin uses its own reporting tables. To create these tables, please follow the steps given below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Connect to the Kill Bill database.</p>
+</li>
+<li>
+<p>Run the analytics plugin <a href="https://github.com/killbill/killbill-analytics-plugin/blob/0a25c18c3951b663e4d1ebf81619f325175209cf/src/main/resources/org/killbill/billing/plugin/analytics/ddl.sql">DDL</a>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <a href="#analytics_tables">"Analytics Tables"</a> section provides an overview of some of the important tables in the analytics database.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_plugin_configuration">Plugin Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can configure the following properties related to the analytics plugin in the <a href="https://docs.killbill.io/latest/userguide_configuration.html#global_configuration_properties">Kill Bill Configuration File</a>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.killbill.notificationq.analytics.tableName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the notification queue table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">notifications (Same as Kill Bill notification queue table)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.killbill.notificationq.analytics.historyTableName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the notification queue history table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">notifications_history (Same as Kill Bill notification queue history table)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.killbill.analytics.lockSleepMilliSeconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How long to sleep between retries to get the lock. See <a href="#lock_notes">lock notes</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.killbill.billing.plugin.analytics.referenceCurrency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reference currency. See  <a href="#currency_conversion">Currency Conversion</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USD</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Note:</strong>
+All the properties specified above are optional and the analytics plugin uses suitable defaults in case they are not specified. We however encourage you use different notification queue tables by specifying the <code>org.killbill.notificationq.analytics.tableName</code> and <code>org.killbill.notificationq.analytics.historyTableName</code> properties.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition, the analytics plugin also allows some optional  <a href="https://docs.killbill.io/latest/userguide_configuration.html#_per_tenant_properties">tenant level</a> configuration. This can be done by executing the following API endpoint via <code>cURL</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>POST<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;X-Killbill-ApiKey: bob&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;X-Killbill-ApiSecret: lazar&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;X-Killbill-CreatedBy: admin&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;Content-Type: text/plain&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-d<span class="tok-w"> </span><span class="tok-s1">&#39;!!org.killbill.billing.plugin.analytics.api.core.AnalyticsConfiguration</span>
+<span class="tok-s1">  refreshDelaySeconds: 10</span>
+<span class="tok-s1">  lockAttemptRetries: 100</span>
+<span class="tok-s1">  rescheduleIntervalOnLockSeconds: 10</span>
+<span class="tok-s1">  enablePartialRefreshes: true</span>
+<span class="tok-s1">  enableTemplateVariables:false</span>
+<span class="tok-s1">  blacklist:</span>
+<span class="tok-s1">    - 468e5259-6635-4988-9ae7-3d79b11fc6ed</span>
+<span class="tok-s1">    - f7da09af-8593-4a88-b6d4-1c4ebf807103</span>
+<span class="tok-s1">  highCardinalityAccounts:</span>
+<span class="tok-s1">    - a8e594e5-1b78-4c2d-876b-f09ec36c611c</span>
+<span class="tok-s1">    - 31ea22c7-19ae-4316-a432-5e6319e49f97</span>
+<span class="tok-s1">  ignoredGroups:</span>
+<span class="tok-s1">    - FIELDS</span>
+<span class="tok-s1">  pluginPropertyKeys:</span>
+<span class="tok-s1">    killbill-stripe:</span>
+<span class="tok-s1">      1: processorResponse</span>
+<span class="tok-s1">      2: avsResultCode</span>
+<span class="tok-s1">      3: cvvResultCode</span>
+<span class="tok-s1">  databases:</span>
+<span class="tok-s1">    warehouse:</span>
+<span class="tok-s1">      type: trino</span>
+<span class="tok-s1">      url: jdbc:trino://example.net:8080/hive/sales?user=admin&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">    </span>http://127.0.0.1:8080/1.0/kb/tenants/uploadPluginConfig/killbill-analytics</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This configures the following:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refreshDelaySeconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The delay in seconds, before starting to refresh analytics tables after an event is received. For workflows with lots of successive events (e.g. create account, add payment method, create payment), this makes sure that the latest state is available when starting the refresh.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lockAttemptRetries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of retries to get the lock. See <a href="#lock_notes">lock notes</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rescheduleIntervalOnLockSeconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The duration in seconds after which the refresh job should be scheduled in case the lock is not available. See <a href="#lock_notes">lock notes</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enablePartialRefreshes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether partial refreshes are allowed. If true, the plugin refreshes only a subset of the analytics tables based on the received event. If false, all the analytics tables are updated. When configured, some features are disabled, namely: <code>analytics_bundles.bundle_account_rank</code> cannot be computed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enableTemplateVariables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether template variables should be allowed in raw SQL queries while creating reports based on SQL queries. Note that this could be prone to SQL injection and should only be enabled in trusted environments.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blacklist</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A list of account IDs to ignore.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">highCardinalityAccounts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A list of account IDs with a high cardinality (account with 100k+ subscriptions). This is a performance hint to the plugin and tells the plugin to look up individual subscription rows instead of querying everything based on <code>account_record_id</code>. When configured, some features are disabled, namely: <code>analytics_accounts.nb_active_bundles</code> is not computed for that account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ignoredGroups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A list of <a href="https://github.com/killbill/killbill-analytics-plugin/blob/59c282f97960dc59b944ca33e17353bc19d7c842/src/main/java/org/killbill/billing/plugin/analytics/AnalyticsJobHierarchy.java#L59">groups</a> that should be ignored for refresh. Possible values are <code>FIELDS</code>, <code>INVOICES</code>, <code>INVOICE_AND_PAYMENTS</code>,<code>OVERDUE</code>, <code>OTHER</code>, <code>SUBSCRIPTIONS</code>, <code>ALL</code>. Thus, database tables corresponding to these groups will be ignored while performing a refresh.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pluginPropertyKeys</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A payment plugin name and plugin properties related to the payment plugin to be stored into the analytics tables. So, if a payment plugin populates these values, these are fetched and stored in the <code>analytics_payment_auths</code> table.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1:processorResponse,
+                                                                                  2:avsResultCode,                                                                                                3:cvvResultCode,                                                                                               4:payment_processor_account_id                                                                                                 5:paymentMethod</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">databases<a id="remote_database_configuration"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the database configuration for external (remote) databases against which reports can be created. The database <code>type</code> and <code>url</code> needs to be specified as part of the database configuration. The analytics plugin currently only supports <code>trino</code> databases. See the <a href="#advanced_report_creation_options">"Advanced Report Creation Options"</a> section.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+<div id="lock_notes" class="paragraph">
+<p><strong>Lock Notes</strong>: Some critical operations in Kill Bill use a <a href="https://github.com/killbill/killbill-commons/tree/master/locker">database-based global lock</a> to ensure a single Kill Bill node performs a given operation at a time. Bumping the <code>lockSleepMilliSeconds</code> parameter could help if these critical operations (refresh) take a long time. By default, if a refresh is in progress (i.e. lock is taken) and another node tries to refresh the same account, it will attempt <code>lockAttemptRetries</code> times to grab the lock, sleeping <code>lockSleepMilliSeconds</code> in between retries, before giving up. If the lock is taken and <code>rescheduleIntervalOnLockSeconds</code> is configured, it will reschedule itself <code>rescheduleIntervalOnLockSeconds</code> in the future, before trying the above algorithm.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reports">Reports</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the plugin is installed and configured, you can access it via Kaui. By default, the analytics plugin does not display any reports. You can either <a href="#installing_canned_reports">install our canned reports</a> or <a href="#create_custom_reports">create your own custom reports</a>. Custom reports can be created by specifying a table/view in the local database or by specifying an SQL query to be executed on a remote database. Depending on the <a href="#report_types">report type</a>, the database table/view/SQL query needs to include certain columns.</p>
+</div>
+<div class="sect2">
+<h3 id="report_types">Report Types</h3>
+<div class="paragraph">
+<p>The analytics plugin supports three types of reports as explained below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>COUNTERS</strong>: Such reports are displayed as <strong>pie charts</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Local</strong>: For a report based on a local database, the columns <code>tenant_record_id</code>, <code>label</code>, and <code>count</code> are mandatory.</p>
+</li>
+<li>
+<p><strong>Remote</strong>: For a report based on a remote database, only the columns <code>label</code>, and <code>count</code> are mandatory. You can optionally specify the placeholder <code>TENANT_RECORD_ID</code> in the query which will be replaced by the <code>tenantRecordId</code> from the Kill Bill database before the query is executed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>TIMELINE</strong>: Such reports are displayed as <strong>line charts</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Local</strong>: For a report based on a local database, the columns <code>day</code> (or <code>ts</code>) and <code>tenant_record_id</code> are mandatory.</p>
+</li>
+<li>
+<p><strong>Remote</strong>:  For a report based on a remote database, the column <code>day</code> (or <code>ts</code>) is mandatory. You can optionally specify the placeholders <code>TENANT_RECORD_ID</code>, <code>START_DATE</code>, and <code>END_DATE</code> in the query which will be replaced by the <code>tenantRecordId</code> from the Kill Bill database and dates specified by a user before the query is executed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>TABLE</strong>: This is used for rendering underlying table data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Local</strong>: For a report based on a local database, the <code>tenant_record_id</code> column is mandatory.</p>
+</li>
+<li>
+<p><strong>Remote</strong>:  For a report based on a remote database, there are no mandatory columns. You can optionally specify the placeholder <code>TENANT_RECORD_ID</code> in the query which will be replaced by the <code>tenantRecordId</code> from the Kill Bill database before the query is executed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="installing_canned_reports">Installing Canned Reports</h3>
+<div class="paragraph">
+<p>As explained earlier, we provide a set of canned reports that can be useful as a starting point. On non-Windows machines, these can be installed by running the <a href="https://github.com/killbill/killbill-analytics-plugin/blob/59c282f97960dc59b944ca33e17353bc19d7c842/src/main/resources/seed_reports.sh">seed_reports.sh</a> script. On Windows machines, you can install a report by opening the desired report sub-directory from the <a href="https://github.com/killbill/killbill-analytics-plugin/tree/master/src/main/resources/reports">reports</a> directory and creating the <em>view</em>, <em>stored procedure</em> and <em>report</em> as explained in the next section.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Note:</strong> The default views will use the converted amount columns when applicable, which require the <code>analytics_currency_conversion</code> table to be populated with currency conversion rates as explained in the <a href="#currency_conversion">"Currency Conversion"</a> section. If you are only using one currency, use the non-converted columns instead (<code>next_mrr</code> instead of <code>converted_next_mrr</code> for example).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create_custom_reports">Creating Custom Reports</h3>
+<div class="paragraph">
+<p>As mentioned earlier, the analytics plugin allows creating custom reports as per your requirements. A custom report can be created by executing API endpoints or via Kaui.</p>
+</div>
+<div class="paragraph">
+<p>In order to create a custom report via Kaui, hover over the plug icon and click on <strong>"Analytics"</strong>. This displays existing reports if any and also allows creating a new report by clicking on <strong>"Available Reports"</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The rest of this section covers report creation via API endpoint execution.</p>
+</div>
+<div class="paragraph">
+<p>There are basically three steps in creating a report:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a table/view corresponding to the report.</p>
+<div class="paragraph">
+<p>Suppose you want to view the number of accounts created per day. This is typically a <a href="#timeline">timeline</a> report and needs to include the <code>tenant_record_id</code> and <code>day</code> columns.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Identify the SQL query corresponding to the report:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="sql"><span></span><span class="tok-k">select</span>
+<span class="tok-w">  </span><span class="tok-n">tenant_record_id</span>
+<span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-n">date_format</span><span class="tok-p">(</span><span class="tok-n">created_date</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-s1">&#39;%Y-%m-%d&#39;</span><span class="tok-p">)</span><span class="tok-w"> </span><span class="tok-k">as</span><span class="tok-w"> </span><span class="tok-k">day</span>
+<span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-k">count</span><span class="tok-p">(</span><span class="tok-o">*</span><span class="tok-p">)</span><span class="tok-w"> </span><span class="tok-k">as</span><span class="tok-w"> </span><span class="tok-k">count</span>
+<span class="tok-k">from</span><span class="tok-w"> </span><span class="tok-n">analytics_accounts</span>
+<span class="tok-k">where</span><span class="tok-w"> </span><span class="tok-n">report_group</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-s1">&#39;default&#39;</span>
+<span class="tok-k">group</span><span class="tok-w"> </span><span class="tok-k">by</span><span class="tok-w"> </span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span>
+<span class="tok-k">order</span><span class="tok-w"> </span><span class="tok-k">by</span><span class="tok-w"> </span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-w"> </span><span class="tok-k">asc</span>
+<span class="tok-p">;</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a view corresponding to this query as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="sql"><span></span><span class="tok-k">create</span><span class="tok-w"> </span><span class="tok-k">or</span><span class="tok-w"> </span><span class="tok-k">replace</span><span class="tok-w"> </span><span class="tok-k">view</span><span class="tok-w"> </span><span class="tok-n">v_new_accounts_per_day</span><span class="tok-w"> </span><span class="tok-k">as</span>
+<span class="tok-k">select</span>
+<span class="tok-w">  </span><span class="tok-n">tenant_record_id</span>
+<span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-n">date_format</span><span class="tok-p">(</span><span class="tok-n">created_date</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-s1">&#39;%Y-%m-%d&#39;</span><span class="tok-p">)</span><span class="tok-w"> </span><span class="tok-k">as</span><span class="tok-w"> </span><span class="tok-k">day</span>
+<span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-k">count</span><span class="tok-p">(</span><span class="tok-o">*</span><span class="tok-p">)</span><span class="tok-w"> </span><span class="tok-k">as</span><span class="tok-w"> </span><span class="tok-k">count</span>
+<span class="tok-k">from</span><span class="tok-w"> </span><span class="tok-n">analytics_accounts</span>
+<span class="tok-k">where</span><span class="tok-w"> </span><span class="tok-n">report_group</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-s1">&#39;default&#39;</span>
+<span class="tok-k">group</span><span class="tok-w"> </span><span class="tok-k">by</span><span class="tok-w"> </span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span>
+<span class="tok-k">order</span><span class="tok-w"> </span><span class="tok-k">by</span><span class="tok-w"> </span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-w"> </span><span class="tok-k">asc</span>
+<span class="tok-p">;</span></code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create the actual report.</p>
+<div class="paragraph">
+<p>You can then create the actual report by executing the following endpoint:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>POST<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;Content-Type: application/json&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-d<span class="tok-w"> </span><span class="tok-s1">&#39;{&quot;reportName&quot;: &quot;new_accounts_per_day&quot;,</span>
+<span class="tok-s1">          &quot;reportPrettyName&quot;: &quot;New accounts created (per day)&quot;,</span>
+<span class="tok-s1">          &quot;sourceTableName&quot;: &quot;v_new_accounts_per_day&quot;}&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This creates a report called <code>new_accounts_per_day</code> based on the <code>v_new_accounts_per_day</code> view. Refer to the <a href="#_report_creation_options">"Report Creation Options"</a> section for a description of all the fields.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can directly specify an SQL query (instead of creating a view) while creating the report. Refer to the <a href="#advanced_report_creation_options">"Advanced Report Creation"</a> section for further information.</p>
+</div>
+</li>
+<li>
+<p>Create a stored procedure for the report.</p>
+<div class="paragraph">
+<p>This is an optional step and should be followed for expensive view queries.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Create a stored procedure that populates a table from the view as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="sql"><span></span><span class="tok-k">create</span><span class="tok-w"> </span><span class="tok-k">table</span><span class="tok-w"> </span><span class="tok-n">new_accounts_per_day</span><span class="tok-w"> </span><span class="tok-k">as</span><span class="tok-w"> </span><span class="tok-k">select</span><span class="tok-w"> </span><span class="tok-o">*</span><span class="tok-w"> </span><span class="tok-k">from</span><span class="tok-w"> </span><span class="tok-n">v_new_accounts_per_day</span><span class="tok-w"> </span><span class="tok-k">limit</span><span class="tok-w"> </span><span class="tok-mi">0</span><span class="tok-p">;</span>
+
+<span class="tok-k">drop</span><span class="tok-w"> </span><span class="tok-k">procedure</span><span class="tok-w"> </span><span class="tok-k">if</span><span class="tok-w"> </span><span class="tok-k">exists</span><span class="tok-w"> </span><span class="tok-n">refresh_new_accounts_per_day</span><span class="tok-p">;</span>
+<span class="tok-k">DELIMITER</span><span class="tok-w"> </span><span class="tok-o">//</span>
+<span class="tok-k">CREATE</span><span class="tok-w"> </span><span class="tok-k">PROCEDURE</span><span class="tok-w"> </span><span class="tok-n">refresh_new_accounts_per_day</span><span class="tok-p">()</span>
+<span class="tok-k">BEGIN</span>
+<span class="tok-k">delete</span><span class="tok-w"> </span><span class="tok-k">from</span><span class="tok-w"> </span><span class="tok-n">new_accounts_per_day</span><span class="tok-p">;</span>
+<span class="tok-k">insert</span><span class="tok-w"> </span><span class="tok-k">into</span><span class="tok-w"> </span><span class="tok-n">new_accounts_per_day</span><span class="tok-w"> </span><span class="tok-k">select</span><span class="tok-w"> </span><span class="tok-o">*</span><span class="tok-w"> </span><span class="tok-k">from</span><span class="tok-w"> </span><span class="tok-n">v_new_accounts_per_day</span><span class="tok-p">;</span>
+<span class="tok-k">END</span><span class="tok-p">;</span>
+<span class="tok-o">//</span>
+<span class="tok-k">DELIMITER</span><span class="tok-w"> </span><span class="tok-p">;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This creates a table called <code>new_accounts_per_day</code> and a stored procedure called <code>refresh_new_accounts_per_day</code> which populates the <code>new_accounts_per_day</code> table from the <code>v_new_accounts_per_day</code> view.</p>
+</div>
+</li>
+<li>
+<p>Create your report using the table name from the previous step and a refresh schedule as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>POST<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;Content-Type: application/json&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-d<span class="tok-w"> </span><span class="tok-s1">&#39;{&quot;reportName&quot;: &quot;new_accounts_per_day&quot;,</span>
+<span class="tok-s1">          &quot;reportPrettyName&quot;: &quot;New accounts created (per day)&quot;,</span>
+<span class="tok-s1">          &quot;sourceTableName&quot;: &quot;new_accounts_per_day&quot;,</span>
+<span class="tok-s1">          &quot;refreshProcedureName&quot;: &quot;refresh_new_accounts_per_day&quot;,</span>
+<span class="tok-s1">          &quot;refreshFrequency&quot;: &quot;DAILY&quot;,</span>
+<span class="tok-s1">          &quot;refreshHourOfDayGmt&quot;: 4}&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This creates a report called <code>new_accounts_per_day</code> based on the <code>new_accounts_per_day</code> table. The <code>refresh_new_accounts_per_day</code> stored procedure refreshes the table from the view. It runs everyday at 4 AM GMT. Refer to the <a href="#_report_creation_options">"Report Creation Options"</a> section for a description of all the fields.</p>
+</div>
+<div class="paragraph">
+<p>You can alternatively create the report with a different refresh schedule as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>POST<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;Content-Type: application/json&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-d<span class="tok-w"> </span><span class="tok-s1">&#39;{&quot;reportName&quot;: &quot;new_accounts_per_day&quot;,</span>
+<span class="tok-s1">          &quot;reportPrettyName&quot;: &quot;New accounts created (per day)&quot;,</span>
+<span class="tok-s1">          &quot;sourceTableName&quot;: &quot;new_accounts_per_day&quot;,</span>
+<span class="tok-s1">          &quot;refreshProcedureName&quot;: &quot;refresh_new_accounts_per_day&quot;,</span>
+<span class="tok-s1">          &quot;refreshFrequency&quot;: &quot;HOURLY&quot;}&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This specifies that the stored procedure should run on an hourly basis (it will run at 5' past the hour).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Note:</strong> When configuring refreshes via stored procedures, it is recommended to bump the connection timeout using the <code>org.killbill.billing.osgi.dao.connectionTimeout</code>. See <a href="https://docs.killbill.io/latest/userguide_configuration.html#configuration_properties_table">Kill Bill Configuration Guide</a> for further information.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="advanced_report_creation_options">Advanced Report Creation</h3>
+<div class="paragraph">
+<p>You can create a report based on SQL executed on a remote database (<code>warehouse</code>) as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>POST<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;Content-Type: application/json&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-d<span class="tok-w"> </span><span class="tok-s1">&#39;{&quot;reportName&quot;: &quot;report_historical_orders&quot;,</span>
+<span class="tok-s1">          &quot;reportType&quot;: &quot;TABLE&quot;,</span>
+<span class="tok-s1">          &quot;reportPrettyName&quot;: &quot;Historical orders&quot;,</span>
+<span class="tok-s1">          &quot;sourceName&quot;: &quot;warehouse&quot;,</span>
+<span class="tok-s1">          &quot;sourceQuery&quot;: &quot;select * from warehouse.public.orders&quot;}&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This creates a report called <code>report_historical_orders</code> based on a remote database (<code>warehouse</code>). It executes the specified SQL query. Refer to the <a href="#_report_creation_options">"Report Creation Options"</a> section for a description of all the fields.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Note:</strong> In order to create a report based on a remote database, the database first needs to be configured at a tenant level as explained in the <a href="#remote_database_configuration">"Plugin Configuration"</a> section.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The above <code>cURL</code> command can also be used to create a report based on a local database by directly specifying an SQL query (instead of a table/view).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_report_creation_options">Report Creation Options</h3>
+<div class="paragraph">
+<p>The following table lists all the report creation options. A subset of these options need to be specified while <a href="#create_custom_reports">creating the report</a>, depending on the report being created.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reportName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique identifier for your report.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reportPrettyName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description, that will be used in Kaui.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reportType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of report. Possible values are <code>COUNTERS</code>, <code>TIMELINE</code>, <code>TABLE</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sourceTableName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the source table/view.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sourceName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the remote database.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sourceQuery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SQL query to be executed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refreshProcedureName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the stored procedure.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refreshFrequency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Frequency with which the refresh. procedure will be executed. Possible values are <code>HOURLY</code> and <code>DAILY</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refreshHourOfDayGmt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hour of the day when the procedure will be executed.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_other_report_operations">Other Report Operations</h3>
+<div class="paragraph">
+<p>Once a report is created, you can perform several operations on it as explained below.</p>
+</div>
+<div class="sect3">
+<h4 id="_retrieve_report_configuration">Retrieve Report Configuration</h4>
+<div class="paragraph">
+<p>You can retrieve a report configuration by specifying the report name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports/new_accounts_per_day&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This returns the report configuration (<code>reportName</code>, <code>reportPrettyName</code>, etc. fields) for the <code>new_accounts_per_day</code> report.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_update_a_report">Update a Report</h4>
+<div class="paragraph">
+<p>You can update a report (edit all fields except <code>reportName</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>PUT<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;Content-Type: application/json&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-d<span class="tok-w"> </span><span class="tok-s1">&#39;{&quot;reportPrettyName&quot;: &quot;New accounts created (refreshed at 2am GMT)&quot;,</span>
+<span class="tok-s1">          &quot;refreshFrequency&quot;: &quot;DAILY&quot;,</span>
+<span class="tok-s1">          &quot;refreshHourOfDayGmt&quot;: 2}&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports/new_accounts_per_day&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This updates the <code>reportPrettyName</code>, <code>refreshFrequency</code> and <code>refreshHourOfDayGmt</code> fields for the <code>new_accounts_per_day</code> report.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_delete_a_report">Delete a Report</h4>
+<div class="paragraph">
+<p>You can delete a report by specifying the report name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>DELETE<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports/new_accounts_per_day&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This deletes the <code>new_accounts_per_day</code> report.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_download_report_data">Download Report Data</h4>
+<div class="paragraph">
+<p>You can download the data behind your report as <code>csv</code> or <code>json</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s1">&#39;http://127.0.0.1:8080/plugins/killbill-analytics/reports?name=new_accounts_per_day&amp;format=csv&#39;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This returns the data behind the <code>new_accounts_per_day</code> report in <code>csv</code> format.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_retrieve_report_sql_query">Retrieve Report SQL Query</h4>
+<div class="paragraph">
+<p>You can retrieve the SQL query corresponding to your report:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports?name=report_accounts_summary&amp;startDate=2018-01-01&amp;endDate=2022-01-01&amp;sqlOnly=true&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This returns the SQL query corresponding to the <code>report_accounts_summary</code> report.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_refresh_a_report">Refresh a Report</h4>
+<div class="paragraph">
+<p>You can refresh a report:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>PUT<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s1">&#39;Content-Type: application/json&#39;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/reports/new_accounts_per_day?shouldRefresh=true&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This refreshes the table/view corresponding to the <code>new_accounts_per_day</code> report.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_api">Data API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The analytics plugin provides a Data API that supports some account level operations as explained below.</p>
+</div>
+<div class="sect2">
+<h3 id="_retrieve_analytics_data_for_account">Retrieve Analytics Data for Account</h3>
+<div class="paragraph">
+<p>You can retrieve all analytics data for an account as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/&lt;account_id&gt;&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This returns the data from the analytics tables for the specified <code>account_id</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_refresh_an_account">Refresh an Account</h3>
+<div class="paragraph">
+<p>You can force a refresh for a given account as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>PUT<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/&lt;account_id&gt;&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This refreshes the analytics tables for the specified <code>account id</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_refresh_all_accounts">Refresh all Accounts</h3>
+<div class="paragraph">
+<p>You can refresh all accounts as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>PUT<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiKey:bob&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-H<span class="tok-w"> </span><span class="tok-s2">&quot;X-Killbill-ApiSecret:lazar&quot;</span><span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This refreshes the analytics table for all accounts. This happens asynchronously and may take a while to complete depending on the number of accounts.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="analytics_tables">Analytics Tables</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section gives a brief overview of some of the important tables in the analytics database.</p>
+</div>
+<div class="sect2">
+<h3 id="_accounts">Accounts</h3>
+<div class="paragraph">
+<p>The table <strong>analytics_accounts</strong> maintains information about Kill Bill accounts. The table doesn&#8217;t contain historic records (it will contain at most one record per Kill Bill account).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subscriptions">Subscriptions</h3>
+<div class="paragraph">
+<p>The table <strong>analytics_subscription_transitions</strong> maintains information about Kill Bill subscriptions. It describes the history of changes (both past and future) on a per subscription basis. It contains all phase transitions for all subscriptions and can be used to build subscription timelines. A few remarks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Given a subscription ID, events are sorted chronologically when stored (you can rely on <code>record_id asc</code>).</p>
+</li>
+<li>
+<p><strong>prev_</strong> fields will always be <code>NULL</code> for creation events.</p>
+</li>
+<li>
+<p><strong>next_</strong> fields will always be <code>NULL</code> for cancellation events.</p>
+</li>
+<li>
+<p>A <code>CHANGE</code> event corresponds to a user initiated change (e.g. upgrade) whereas <code>SYSTEM_CHANGE</code> corresponds to a phase event (e.g. transition from trial to evergreen phase).</p>
+</li>
+<li>
+<p>The <strong>requested_timestamp</strong> field reflects when the transition was requested; the <strong>next_start_date</strong> field reflects the effective transition time.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_invoices">Invoices</h3>
+<div class="paragraph">
+<p>The following tables maintain information about invoices posted by account:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>analytics_invoices</p>
+</li>
+<li>
+<p>analytics_invoice_adjustments</p>
+</li>
+<li>
+<p>analytics_invoice_item_adjustments</p>
+</li>
+<li>
+<p>analytics_invoice_credits</p>
+</li>
+<li>
+<p>analytics_invoice_items</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A few remarks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>EXTERNAL_CHARGE</code>, <code>FIXED</code>, and <code>RECURRING</code> items are treated as regular line items and are stored in <strong>analytics_invoice_items</strong>.</p>
+</li>
+<li>
+<p><code>ITEM_ADJ</code> items are treated as invoice item adjustments and stored in <strong>analytics_invoice_item_adjustments</strong>.</p>
+</li>
+<li>
+<p><code>CBA_ADJ</code> items (gained or consumed) are treated as account credits and stored in <strong>analytics_invoice_credits</strong>.</p>
+</li>
+<li>
+<p><code>CREDIT_ADJ</code> items that are not on their own invoice (items on an existing <code>DRAFT</code> invoice) are stored in <strong>analytics_invoice_adjustments</strong>.</p>
+</li>
+<li>
+<p><code>CREDIT_ADJ</code> items on their on invoice are not stored separately in the analytics table since their corresponding <code>CBA_ADJ</code> items are stored in the <strong>analytics_invoice_credits</strong> as mentioned above.</p>
+</li>
+<li>
+<p><code>REPAIR_ADJ</code> items are stored in the <strong>analytics_invoice_item_adjustments</strong> table. For example, if a recurring item of $20 was repaired into a $5 recurring item, <strong>analytics_invoice_items</strong> would contain the original $20 line item and <strong>analytics_invoice_item_adjustments</strong> would contain a $-15 adjustment item.</p>
+</li>
+<li>
+<p>Any invoice item has a revenue recognizable attribute which is used to tell if the item is recognizable from a finance perspective (tied to cash). This is used for credits only today and we assume that any administrator generated credit (<code>CREDIT_ADJ</code> and <code>CBA_ADJ</code> on their own invoice) is not recognizable. All other credit items, including system generated ones, are.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some of the important invoice related attributes can be computed as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.killbill.io/latest/Kill-Bill-Glossary.html#invoice_balance"><strong>invoice balance</strong></a>: Calculated as: <strong>invoice_amount_charged + invoice_amount_credited + invoice_amount_adjusted_for_account_credit - (invoice_amount_paid + invoice_amount_refunded)</strong>. Note that <strong>invoice_amount_adjusted_for_account_credit</strong> is an internal adjustment that applies for account level credits only (<code>CREDIT_ADJ</code> items on their own invoices) and is not represented in Analytics. See <a href="https://docs.killbill.io/latest/invoice_examples.html#\_invoice\_balance">"<em>Invoice Balance</em>"</a> for further information.</p>
+</li>
+<li>
+<p><strong>invoice_amount_charged</strong>: Sum of all <strong>analytics_invoice_items</strong>, <strong>analytics_invoice_adjustments</strong>, and <strong>analytics_invoice_item_adjustments</strong> items for that invoice.</p>
+</li>
+<li>
+<p><strong>invoice_amount_credited</strong>: Sum of all <strong>analytics_invoice_credits</strong> items for that invoice (positive if granted, negative if used).</p>
+</li>
+<li>
+<p><strong>invoice_amount_paid</strong>:
+Sum of all <strong>analytics_payment_purchases</strong> items for that invoice.</p>
+</li>
+<li>
+<p><strong>invoice_amount_refunded</strong>: Sum of all <strong>analytics_payment_chargebacks</strong> and <strong>analytics_payment_refunds</strong> items for that invoice.</p>
+</li>
+<li>
+<p><strong>invoice_original_amount_charged</strong>: Sum of all <strong>analytics_invoice_items</strong> items for that invoice at the time of invoice creation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>References:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.killbill.io/latest/userguide_subscription.html#components-invoice-items">Invoice Items</a></p>
+</li>
+<li>
+<p><a href="https://docs.killbill.io/latest/invoice_examples.html">Charged Amount and Invoice Balance Calculation examples</a></p>
+</li>
+<li>
+<p><a href="https://docs.killbill.io/latest/Kill-Bill-Glossary.html#_i">Kill Bill Glossary</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_payments">Payments</h3>
+<div class="paragraph">
+<p>The following tables maintain information about Kill Bill payments, refunds and chargebacks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>analytics_payment_auths</p>
+</li>
+<li>
+<p>analytics_payment_captures,</p>
+</li>
+<li>
+<p>analytics_payment_purchases</p>
+</li>
+<li>
+<p>analytics_payment_refunds</p>
+</li>
+<li>
+<p>analytics_payment_credits</p>
+</li>
+<li>
+<p>analytics_payment_chargebacks</p>
+</li>
+<li>
+<p>analytics_payment_voids</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_entitlement_states">Entitlement States</h3>
+<div class="paragraph">
+<p>The table <strong>analytics_entitlement_states</strong> maintains information about Kill Bill entitlement states, including overdue statuses. The table contains historic status for a given account.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tags_and_custom_fields">Tags and Custom Fields</h3>
+<div class="paragraph">
+<p>The following tables maintain information about tags and custom fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>analytics_account_tags</p>
+</li>
+<li>
+<p>analytics_bundle_tags</p>
+</li>
+<li>
+<p>analytics_invoice_tags</p>
+</li>
+<li>
+<p>analytics_payment_tags</p>
+</li>
+<li>
+<p>analytics_account_fields</p>
+</li>
+<li>
+<p>analytics_bundle_fields</p>
+</li>
+<li>
+<p>analytics_invoice_fields</p>
+</li>
+<li>
+<p>analytics_invoice_payment_fields</p>
+</li>
+<li>
+<p>analytics_payment_fields</p>
+</li>
+<li>
+<p>analytics_payment_method_fields</p>
+</li>
+<li>
+<p>analytics_transaction_fields</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These tables don&#8217;t contain historic records (they will contain the current state of tags and custom fields).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="currency_conversion">Currency Conversion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each table containing monetary columns (e.g. price, balance, &#8230;&#8203;) will also contain a currency column, expressing the currency of the monetary values. This can be difficult to work with as tables can contain rows in various currencies: any arithmetic across them won&#8217;t make any sense.</p>
+</div>
+<div class="paragraph">
+<p>To work around this problem, the analytics plugin has the concept of <strong>converted currency</strong>, which is a global constant currency of reference. All analytics tables contain an additional column (prefixed with <strong>converted_</strong>) corresponding to each monetary column. The <strong>converted_</strong> column stores the value in the converted currency. So, for example, the <code>balance</code> column (which has a monetary value) in the  <code>analytics_accounts</code> table has a corresponding <code>converted_balance</code> column.</p>
+</div>
+<div class="paragraph">
+<p>By default, the <strong>converted_</strong> column stores the value in <code>USD</code>. You can however change this to any other currency as required.</p>
+</div>
+<div class="paragraph">
+<p>For example, to use <code>EUR</code> as the converted currency, you need to do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set <code>EUR</code> as the reference currency in the <a href="https://docs.killbill.io/latest/userguide_configuration.html#global_configuration_properties">Kill Bill configuration file</a> as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>org.killbill.billing.plugin.analytics.referenceCurrency<span class="tok-o">=</span>EUR</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Populate the <strong>analytics_currency_conversion</strong> table to contain the rates you&#8217;d like to use for various currencies, for a given period of time.</p>
+<div class="paragraph">
+<p>For example, the following query populates this table with the <code>USD</code> to <code>EUR</code> conversion rate of <code>0.88</code> for the time period <code>2022-01-01</code> to <code>2022-02-01</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="sql"><span></span><span class="tok-k">insert</span><span class="tok-w"> </span><span class="tok-k">into</span><span class="tok-w"> </span><span class="tok-n">analytics_currency_conversion</span><span class="tok-w"> </span><span class="tok-p">(</span><span class="tok-n">currency</span><span class="tok-p">,</span><span class="tok-n">start_date</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-n">end_date</span><span class="tok-p">,</span><span class="tok-n">reference_rate</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-n">reference_currency</span><span class="tok-p">)</span><span class="tok-w"> </span><span class="tok-k">values</span><span class="tok-w"> </span><span class="tok-p">(</span><span class="tok-s1">&#39;USD&#39;</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-s1">&#39;2022-01-01&#39;</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-s1">&#39;2022-02-01&#39;</span><span class="tok-p">,</span><span class="tok-mi">0</span><span class="tok-p">.</span><span class="tok-mi">88</span><span class="tok-p">,</span><span class="tok-s1">&#39;EUR&#39;</span><span class="tok-p">);</span></code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Once the above change is done, the <code>converted_</code> columns will store the monetary value in <code>EUR</code> using the specified conversion rate.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_health_check">Health Check</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The analytics plugin provides the following healthcheck related endpoints.</p>
+</div>
+<div class="sect2">
+<h3 id="_checking_status">Checking Status</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/healthcheck&quot;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_put_out_of_rotation">Put out of Rotation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>DELETE<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/healthcheck&quot;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_put_in_rotation">Put in Rotation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="bash"><span></span>curl<span class="tok-w"> </span>-v<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-X<span class="tok-w"> </span>PUT<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span>-u<span class="tok-w"> </span>admin:password<span class="tok-w"> </span><span class="tok-se">\</span>
+<span class="tok-w">     </span><span class="tok-s2">&quot;http://127.0.0.1:8080/plugins/killbill-analytics/healthcheck&quot;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div></div><div class="bottom-nav-links"><a href="#" id="prev-nav-link" class="bottom-nav-link card prev"><span class="arrow-icon left"><svg class="i-arrow" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.19526 1.02876C4.45561 0.768409 4.87772 0.768409 5.13807 1.02876C5.39842 1.28911 5.39842 1.71122 5.13807 1.97157L2.27614 4.8335H11.3333C11.7015 4.8335 12 5.13197 12 5.50016C12 5.86835 11.7015 6.16683 11.3333 6.16683H2.27614L5.13807 9.02876C5.39842 9.28911 5.39842 9.71122 5.13807 9.97157C4.87772 10.2319 4.45561 10.2319 4.19526 9.97157L0.195261 5.97157C-0.0650883 5.71122 -0.0650883 5.28911 0.195261 5.02876L4.19526 1.02876Z" fill=""/></svg><span class="prev-text">Previous</span></span><span id="prev-navigator" class="bottom-nav-text">Prev</span>                               </a><a href="#" id="next-nav-link" class="bottom-nav-link card next"><span class="arrow-icon"><span class="next-text">Next</span><svg class="i-arrow icon-left" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.19526 1.02876C4.45561 0.768409 4.87772 0.768409 5.13807 1.02876C5.39842 1.28911 5.39842 1.71122 5.13807 1.97157L2.27614 4.8335H11.3333C11.7015 4.8335 12 5.13197 12 5.50016C12 5.86835 11.7015 6.16683 11.3333 6.16683H2.27614L5.13807 9.02876C5.39842 9.28911 5.39842 9.71122 5.13807 9.97157C4.87772 10.2319 4.45561 10.2319 4.19526 9.97157L0.195261 5.97157C-0.0650883 5.71122 -0.0650883 5.28911 0.195261 5.02876L4.19526 1.02876Z" fill=""/></svg></span><span id="next-navigator" class="bottom-nav-text">Next</span></a></div></article></div><div class="bd-links-wrapper"><nav class="bd-links toc right-side-menu" id="myScrollspy" data-toggle="toc"></nav></div></div></div></div></div></main><script src="https://cdn.staticaly.com/gh/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.js"></script><script type="module" src="/javascripts/kb.js"></script><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script><script>docsearch({apiKey: '3ef227e7fd5e2e1a3fffd880484934bf', container: '#docsearch', appId: 'S2ISXITURI', indexName: 'killbill'});</script></body></html>

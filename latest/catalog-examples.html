@@ -1,0 +1,2364 @@
+<!DOCTYPE html><html lang="en"><head><title>Catalog Examples</title><style>pre.pygments .hll { background-color: #ffffcc }
+pre.pygments { background: #f8f8f8; }
+pre.pygments .tok-c { color: #3D7B7B; font-style: italic } /* Comment */
+pre.pygments .tok-err { border: 1px solid #FF0000 } /* Error */
+pre.pygments .tok-k { color: #008000; font-weight: bold } /* Keyword */
+pre.pygments .tok-o { color: #666666 } /* Operator */
+pre.pygments .tok-ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+pre.pygments .tok-cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+pre.pygments .tok-cp { color: #9C6500 } /* Comment.Preproc */
+pre.pygments .tok-cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+pre.pygments .tok-c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+pre.pygments .tok-cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+pre.pygments .tok-gd { color: #A00000 } /* Generic.Deleted */
+pre.pygments .tok-ge { font-style: italic } /* Generic.Emph */
+pre.pygments .tok-gr { color: #E40000 } /* Generic.Error */
+pre.pygments .tok-gh { color: #000080; font-weight: bold } /* Generic.Heading */
+pre.pygments .tok-gi { color: #008400 } /* Generic.Inserted */
+pre.pygments .tok-go { color: #717171 } /* Generic.Output */
+pre.pygments .tok-gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+pre.pygments .tok-gs { font-weight: bold } /* Generic.Strong */
+pre.pygments .tok-gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+pre.pygments .tok-gt { color: #0044DD } /* Generic.Traceback */
+pre.pygments .tok-kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+pre.pygments .tok-kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+pre.pygments .tok-kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+pre.pygments .tok-kp { color: #008000 } /* Keyword.Pseudo */
+pre.pygments .tok-kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+pre.pygments .tok-kt { color: #B00040 } /* Keyword.Type */
+pre.pygments .tok-m { color: #666666 } /* Literal.Number */
+pre.pygments .tok-s { color: #BA2121 } /* Literal.String */
+pre.pygments .tok-na { color: #687822 } /* Name.Attribute */
+pre.pygments .tok-nb { color: #008000 } /* Name.Builtin */
+pre.pygments .tok-nc { color: #0000FF; font-weight: bold } /* Name.Class */
+pre.pygments .tok-no { color: #880000 } /* Name.Constant */
+pre.pygments .tok-nd { color: #AA22FF } /* Name.Decorator */
+pre.pygments .tok-ni { color: #717171; font-weight: bold } /* Name.Entity */
+pre.pygments .tok-ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+pre.pygments .tok-nf { color: #0000FF } /* Name.Function */
+pre.pygments .tok-nl { color: #767600 } /* Name.Label */
+pre.pygments .tok-nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+pre.pygments .tok-nt { color: #008000; font-weight: bold } /* Name.Tag */
+pre.pygments .tok-nv { color: #19177C } /* Name.Variable */
+pre.pygments .tok-ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+pre.pygments .tok-w { color: #bbbbbb } /* Text.Whitespace */
+pre.pygments .tok-mb { color: #666666 } /* Literal.Number.Bin */
+pre.pygments .tok-mf { color: #666666 } /* Literal.Number.Float */
+pre.pygments .tok-mh { color: #666666 } /* Literal.Number.Hex */
+pre.pygments .tok-mi { color: #666666 } /* Literal.Number.Integer */
+pre.pygments .tok-mo { color: #666666 } /* Literal.Number.Oct */
+pre.pygments .tok-sa { color: #BA2121 } /* Literal.String.Affix */
+pre.pygments .tok-sb { color: #BA2121 } /* Literal.String.Backtick */
+pre.pygments .tok-sc { color: #BA2121 } /* Literal.String.Char */
+pre.pygments .tok-dl { color: #BA2121 } /* Literal.String.Delimiter */
+pre.pygments .tok-sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+pre.pygments .tok-s2 { color: #BA2121 } /* Literal.String.Double */
+pre.pygments .tok-se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+pre.pygments .tok-sh { color: #BA2121 } /* Literal.String.Heredoc */
+pre.pygments .tok-si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+pre.pygments .tok-sx { color: #008000 } /* Literal.String.Other */
+pre.pygments .tok-sr { color: #A45A77 } /* Literal.String.Regex */
+pre.pygments .tok-s1 { color: #BA2121 } /* Literal.String.Single */
+pre.pygments .tok-ss { color: #19177C } /* Literal.String.Symbol */
+pre.pygments .tok-bp { color: #008000 } /* Name.Builtin.Pseudo */
+pre.pygments .tok-fm { color: #0000FF } /* Name.Function.Magic */
+pre.pygments .tok-vc { color: #19177C } /* Name.Variable.Class */
+pre.pygments .tok-vg { color: #19177C } /* Name.Variable.Global */
+pre.pygments .tok-vi { color: #19177C } /* Name.Variable.Instance */
+pre.pygments .tok-vm { color: #19177C } /* Name.Variable.Magic */
+pre.pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */</style><link rel="icon" type="image/x-icon" href="/stylesheets/images/favicon.ico"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"><link rel="preconnect" href="https://S2ISXITURI-dsn.algolia.net"><link rel="stylesheet" href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'><link rel="stylesheet" href='https://cdn.staticaly.com/gh/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.css'><link rel="stylesheet" href="stylesheets/kb.css"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Catalog Examples"></head><body data-spy="scroll" data-target="#myScrollspy" data-offset="100"><div class="loader-wrapper"><div id="loading"></div></div><header class="header sticky" id="header"><div class="header-wrapper"><div class="container-fluid"><div class="row flex-xl-nowrap justify-content-evenly"><div class="header-logo"><div class="logo"><a href="/"><img src="/stylesheets/images/logo/light-logo.svg" style="height:38px" alt="Kill Bill Docs" id="logo" height="38" width="146"></a></div><div class="switch"><input type="checkbox" aria-label="Search" name="theme-toggle" id="theme-toggle"><span class="slider round"></span></div></div><div class="nav-toggler sidebar-toggler"><svg class="hamburger" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 7C20.75 7.41421 20.4142 7.75 20 7.75L4 7.75C3.58579 7.75 3.25 7.41421 3.25 7C3.25 6.58579 3.58579 6.25 4 6.25L20 6.25C20.4142 6.25 20.75 6.58579 20.75 7Z" fill=""/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 12.4142 20.4142 12.75 20 12.75L4 12.75C3.58579 12.75 3.25 12.4142 3.25 12C3.25 11.5858 3.58579 11.25 4 11.25L20 11.25C20.4142 11.25 20.75 11.5858 20.75 12Z" fill=""/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.75 17C20.75 17.4142 20.4142 17.75 20 17.75L4 17.75C3.58579 17.75 3.25 17.4142 3.25 17C3.25 16.5858 3.58579 16.25 4 16.25L20 16.25C20.4142 16.25 20.75 16.5858 20.75 17Z" fill=""/></svg></div><div class="header-search"><div class="search-form-wrapper"><div id="docsearch" style="height: 43px; display: flex; align-items: center; width: 100%;"></div></div></div></div></div></div></header><main class="main sidebar-show"><div class="container-fluid"><div class="row flex-xl-nowrap"><div class="sidebar-wrapper"><aside class="sidebar"><div class="sidebar__control"><svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.33316 10.6665L1.6665 5.99992L6.33316 1.33325" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><nav class="sidebar-nav"><ul class="nav navbar-nav"><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Getting Started</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li><a class="nav-link" href="/latest/what_is_kill_bill.html">What is Kill Bill?</a></li><li><a class="nav-link" href="/latest/getting_started.html">Getting Started (Installation)</a></li><li><a class="nav-link" href="/latest/quick_start_with_kaui.html">Quick Start with Kaui</a></li><li><a class="nav-link" href="/latest/quick_start_with_kb_api.html">Quick Start with the Kill Bill API</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Installation</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/stripe_plugin.html">Kill Bill + Stripe DIY</a></li><li><a class="nav-link" href="/latest/userguide_deployment.html">Going to Production</a></li><li><a class="nav-link" href="/latest/database_migrations.html">Database Migrations</a></li><li><a class="nav-link" href="/latest/PostgreSQL.html">PostgreSQL Setup</a></li><li><a class="nav-link" href="https://github.com/killbill/killbill/releases" onclick="getOutboundLink('https://github.com/killbill/killbill/releases'); return false;">Release&nbsp;Notes</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">AWS</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/how-to-set-up-a-single-tier-system.html">Single-Tier Setup</a></li><li><a class="nav-link" href="/latest/how-to-set-up-a-multi-tier-system.html">Multi-Tier Setup</a></li><li><a class="nav-link" href="/latest/how-to-set-up-a-cloud-formation-system.html">CloudFormation Setup</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/how-to-maintain-a-single-tier-system.html">Single-Tier Maintenance</a></li><li><a class="nav-link" href="/latest/how-to-maintain-a-multi-tier-system.html">Multi-Tier Maintenance</a></li><li><a class="nav-link" href="/latest/how-to-maintain-a-cloud-formation-system.html">CloudFormation Maintenance</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Manuals</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/userguide_subscription.html">Subscription&nbsp;Billing</a></li><li><a class="nav-link" href="/latest/userguide_payment.html">Payment Processing</a></li><li><a class="nav-link" href="/latest/userguide_kaui.html">Kaui, the Administrative&nbsp;UI</a></li><li><a class="nav-link" href="/latest/email-notification-plugin.html">Email Notification Plugin</a></li><li><a class="nav-link" href="/latest/custom-email-invoice-formatter.html">Custom Email Formatter</a></li><li><a class="nav-link" href="/latest/userguide_analytics.html">Analytics Plugin</a></li><li><a class="nav-link" href="/latest/userguide_configuration.html">Kill Bill&nbsp;Configuration</a></li><li><a class="nav-link" href="/latest/internationalization.html">Kill Bill&nbsp;Internationalization</a></li><li><a class="nav-link" href="/latest/migration_guide.html">Migrating to Kill Bill</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Tutorials</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plan_alignment.html">Plans Alignments</a></li><li><a class="nav-link" href="/latest/overdue.html">Overdue System</a></li><li><a class="nav-link" href="/latest/consumable_in_arrear.html">In Arrear UsageBilling</a></li><li><a class="nav-link" href="/latest/ha.html">Hierarchical Accounts</a></li><li><a class="nav-link" href="/latest/catalog-examples.html">Catalog Examples</a></li><li><a class="nav-link" href="/latest/invoice_examples.html">Invoice Examples</a></li><li><a class="nav-link" href="/latest/invoice_templates.html">Invoice Templates</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Integration</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="http://killbill.github.io/slate" onclick="getOutboundLink('http://killbill.github.io/slate'); return false;">REST API Reference</a></li><li><a class="nav-link" href="/latest/swagger_documentation.html">Swagger UI Documentation</a></li><li><a class="nav-link" href="/latest/postman.html">Postman Integration</a></li><li><a class="nav-link" href="/latest/debugging.html">Debugging</a></li><li><a class="nav-link" href="/latest/push_notifications.html">Push Notifications</a></li><li><a class="nav-link" href="/latest/kill_bill_events.html">Kill Bill Events</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Plugin Development</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_introduction.html">Plugin Introduction</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_development.html">Plugin Development</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/plugin_installation.html">Plugin Installation</a></li><li><a class="nav-link" href="/latest/plugin_use_cases.html">Special Plugin Use Cases</a></li><li><a class="nav-link" href="/latest/notification_plugin.html">Notification Plugins</a></li><li><a class="nav-link" href="/latest/payment_plugin.html">Payment Plugins</a></li><li><a class="nav-link" href="/latest/payment_control_plugin.html">Payment Control Plugins</a></li><li><a class="nav-link" href="/latest/invoice_plugin.html">Invoice Plugins</a></li><li><a class="nav-link" href="/latest/catalog_plugin.html">Catalog Plugins</a></li><li><a class="nav-link" href="/latest/entitlement_plugin.html">Entitlement Plugins</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Operational Guides</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/deploy_to_kubernetes.html">Kubernetes (K8s) Deployment</a></li><li class="bd-sidenav-active"><a class="nav-link" href="/latest/user_management.html">Users, Roles, and Permissions</a></li><li><a class="nav-link" href="/latest/plugin_management.html">Plugin Management</a></li><li><a class="nav-link" href="/latest/aws-tools.html">AWS Analytics Tools</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Client Libraries</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/java_client.html">Java</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-ruby" onclick="getOutboundLink('http://github.com/killbill/killbill-client-ruby'); return false;">Ruby</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-php" onclick="getOutboundLink('http://github.com/killbill/killbill-client-php'); return false;">PHP</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-js" onclick="getOutboundLink('http://github.com/killbill/killbill-client-js'); return false;">Node.js</a></li><li><a class="nav-link" href="http://github.com/killbill/killbill-client-python" onclick="getOutboundLink('http://github.com/killbill/killbill-client-python'); return false;">Python</a></li><li><a class="nav-link" href="http://github.com/killbill/kbcli" onclick="getOutboundLink('http://github.com/killbill/kbcli'); return false;">KillBill Go </a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">About Kill Bill</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/demo.html">Demo</a></li><li><a class="nav-link" href="/latest/features.html">Features List</a></li><li><a class="nav-link" href="/latest/faq.html">Technical FAQs</a></li><li><a class="nav-link" href="/latest/Kill-Bill-Glossary.html">Glossary</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">Internal</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="/latest/internal_design.html">Internal Design</a></li><li><a class="nav-link" href="/latest/entitlement_subsystem.html">Entitlement Subsystem</a></li><li><a class="nav-link" href="/latest/invoice_subsystem.html">Invoice Subsystem</a></li><li><a class="nav-link" href="/latest/development.html">Development Environment</a></li></ul></li><li><div class="icon-title"><a class="bd-toc-link main-link" role="button">References</a><svg class="chevron" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5024 5.70711C10.1119 6.09763 9.47871 6.09763 9.08818 5.70711L5.7953 2.41421L2.50241 5.70711C2.11188 6.09763 1.47872 6.09763 1.0882 5.70711C0.697672 5.31658 0.697672 4.68342 1.0882 4.29289L5.08819 0.292893C5.47871 -0.0976311 6.11188 -0.0976311 6.5024 0.292893L10.5024 4.29289C10.8929 4.68342 10.8929 5.31658 10.5024 5.70711Z" fill="#D1D5DB"/></svg></div><ul class="nav navbar-nav"><li class="bd-sidenav-active"><a class="nav-link" href="https://github.com/killbill/killbill-docs/tree/v3/swagger" onclick="getOutboundLink('https://github.com/killbill/killbill-docs/tree/v3/swagger'); return false;">Swagger&nbsp;API Schema</a></li><li><a class="nav-link" href="/latest/catalog.xsd">Catalog XSD Reference</a></li><li><a class="nav-link" href="/latest/overdue.xsd">Overdue XSD Reference</a></li></ul></li></ul></nav><script src="https://code.jquery.com/jquery-3.6.1.min.js"></script><script>
+  let $ = jQuery;
+  $('.sidebar-nav .icon-title').on('click', function (e) {
+    e.preventDefault();
+    $('.sidebar-nav .nav.navbar-nav .nav.navbar-nav').slideUp(200);
+    $('.sidebar-nav > .navbar-nav > li').removeClass('open');
+
+    if($(this).next().is(':visible')){
+      $('.sidebar-nav .nav.navbar-nav .nav.navbar-nav').slideUp(200);
+      $('.sidebar-nav > .navbar-nav > li').removeClass('open');
+    } else {
+      $(this).parent().addClass('open');
+      $(this).next().slideDown(200);
+    }
+  });
+
+  let pageURL = $(location).attr("href");
+  pageURL = pageURL.includes('.html') ? pageURL : pageURL + '.html';
+  $('.nav-link').each(function() {
+    if (pageURL.toLowerCase().includes($(this).attr('href').toLowerCase())) {
+      $(this).parent().addClass('list-item-active');
+      $(this).parent().parent().addClass('active-list');
+      $(this).parent().parent().prev().addClass('bd-link-active-wrap');
+    }
+  });
+</script><a class="doclink" href="mailto:support@killbill.io">Report a doc problem</a></aside></div><div class="article-container"><div class="center-content"><div class="main-wrapper"><article class="content-wrapper"><div class="banner"><h1>Catalog Examples</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document provides examples of catalogs and how they affect invoices/subscriptions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_use_this_document">How to Use This Document</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each section in this document corresponds to a particular catalog component and provides examples of catalogs that demonstrate that catalog component.</p>
+</div>
+<div class="paragraph">
+<p>You can try out the various examples in each section by:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Uploading the corresponding catalog (via Kaui or <a href="https://killbill.github.io/slate/#catalog-upload-a-catalog-as-xml">Upload Catalog</a> API call)</p>
+</li>
+<li>
+<p>Creating an account (via Kaui or <a href="https://killbill.github.io/slate/#account-create-an-account">Create Account</a> API call)</p>
+</li>
+<li>
+<p>Creating a subscription as required (via Kaui or <a href="https://killbill.github.io/slate/#subscription-create-a-subscription">Create Subscription</a> API call)</p>
+</li>
+<li>
+<p>Triggering an invoice dry-run (via Kaui or <a href="https://killbill.github.io/slate/#invoice-generate-a-dry-run-invoice">Generate Dry Run</a> API call)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites">Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ensure that you have gone through the <a href="https://docs.killbill.io/latest/userguide_subscription.html#components-catalog"><em>Subscription User Guide</em></a> and are familiar with the various catalog components like products, plans, phases, and so forth.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_billing_modes">Billing Modes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A catalog needs to include a <strong>Billing Mode</strong> as explained in the <a href="https://docs.killbill.io/latest/invoice_subsystem.html#_overview"><em>Invoice Subsystem</em></a> document.</p>
+</div>
+<div class="paragraph">
+<p>A quick summary of billing modes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Can be specified at the <strong>catalog</strong> level or on a <strong>per-plan</strong> basis.</p>
+</li>
+<li>
+<p><strong>IN_ADVANCE</strong> indicates that each recurring subscription is charged at the <em>beginning</em> of the billing period.</p>
+</li>
+<li>
+<p><strong>IN_ARREAR</strong> indicates that each recurring subscription is charged at the <em>end</em> of the billing period.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This section provides examples of catalogs with different billing modes. For simplicity&#8217;s sake, only catalogs with catalog-level billing modes are demonstrated below. However, the behavior is the same even when a per-plan billing mode is used.</p>
+</div>
+<div class="paragraph">
+<p>Also for the sake of simplicity, all the catalogs demonstrated in this section include a single product (<code>STANDARD</code>) and a single plan (<code>standard-monthly</code>) corresponding to it.</p>
+</div>
+<div class="sect2">
+<h3 id="_in_advance_billing_mode">IN_ADVANCE Billing Mode</h3>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/in-advance-billing.xml">In Advance Billing</a> catalog. It specifies an <strong>IN_ADVANCE</strong> billing mode. In this case, the <code>standard-monthly</code> plan has a single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code> (plan phases are explained in the next section).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-17</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for  <code>2021-09-17</code> to <code>2021-10-17</code> since <strong>IN_ADVANCE</strong> billing is used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-17</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$24.95</code> for <code>2021-10-17</code> to <code>2021-11-17</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_in_arrear_billing_mode">IN_ARREAR Billing Mode</h3>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/in-arrear-billing.xml">In Arrear Billing</a> catalog. It specifies an <strong>IN_ARREAR</strong> billing mode. Just like the earlier catalog, the <code>standard-monthly</code> plan has a single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-17</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Because <strong>IN_ARREAR</strong> billing mode is specified, the system does not generate an invoice (yet).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-17</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$24.95</code> for <code>2021-09-17</code> to <code>2021-10-17</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_plan_phases">Plan Phases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each plan can consist of multiple phases as explained in the <a href="https://docs.killbill.io/latest/userguide_subscription.html#_plans"><em>Subscription Billing</em></a> document.</p>
+</div>
+<div class="paragraph">
+<p>A quick summary of plan phases:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Can be one of the type <code>TRIAL</code>, <code>DISCOUNT</code>, <code>FIXEDTERM</code>, <code>EVERGREEN</code>.</p>
+</li>
+<li>
+<p>Each phase has a <code>Duration</code>, <code>Billing Period</code>, <code>Recurring Price</code>, <code>Fixed Price</code>, and <code>Usage Sections</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This section provides examples of catalogs that demonstrate the various plan phases.</p>
+</div>
+<div class="paragraph">
+<p>All the catalogs demonstrated in this section use <strong>IN_ADVANCE</strong> billing mode. Also, as before, all the catalogs include a single product (<code>STANDARD</code>) and a single plan (<code>standard-monthly</code>) corresponding to it.</p>
+</div>
+<div class="sect2">
+<h3 id="_no_trial_phase_and_fixed_term_phase">No Trial Phase and Fixed Term Phase</h3>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/fixedterm-no-trial.xml">Fixed Term No Trial</a> catalog. In this case, the <code>standard-weekly</code> plan has a single <code>FIXEDTERM</code> phase for a period of <code>6</code> weeks with a weekly recurring charge of <code>$24.95</code>. So, users will be charged <code>$24.95</code> weekly for <code>6</code> weeks, after which the fixed term ends.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-10</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-10</code> to <code>2021-09-17</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-18</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$24.95</code> for <code>2021-09-17</code> to <code>2021-09-24</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-15</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$24.95</code> for <code>2021-10-15</code> to <code>2021-10-22</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No invoice generated as the fixed term is over.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_no_trial_phase_and_monthly_evergreen_phase">No Trial Phase and Monthly Evergreen Phase</h3>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/monthly-no-trial.xml">Monthly No Trial</a> catalog. In this case, the <code>standard-monthly</code> plan has a single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code>. So, users will be charged <code>$24.95</code> monthly in perpetuity.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-10</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-10</code> to <code>2021-10-10</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-10</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$24.95</code> for <code>2021-10-10</code> to <code>2021-11-10</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2022-05-10</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$24.95</code> for <code>2022-05-10</code> to <code>2022-06-10</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_trial_phase_and_monthly_evergreen_phase">Trial Phase and Monthly Evergreen Phase</h3>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/monthly-with-trial.xml">Monthly With Trial</a> catalog. In this case, the <code>standard-monthly</code> plan has a <code>TRIAL</code> phase of <code>10</code> days followed by an <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code>. So, users will not be charged for the first <code>10</code> days, after which they will be charged <code>$24.95</code> monthly in perpetuity.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-10</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$0</code> due to trial phase</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-20</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trial phase ends so Invoice generated for <code>$24.95</code> for <code>2021-09-20</code> to <code>2021-10-20</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-20</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$24.95</code> for <code>2021-10-20</code> to <code>2022-11-20</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2022-01-20</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$24.95</code> for <code>2022-01-20</code> to <code>2022-02-20</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_fixed_and_recurring_price_evergreen_phase">Fixed and Recurring Price Evergreen Phase</h3>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/blob/d7f8891546850dcb8767041c556ef04f589746ca/catalogs/fixed-and-recurring-price-evergreen-phase.xml">Fixed and Recurring Price Evergreen Phase</a> catalog. In this case, the <code>standard-monthly</code> plan has a single <code>EVERGREEN</code> phase. It has a <em>fixed price</em> of <code>$50</code> and a <em>recurring charge</em> of <code>$24.95</code>. So, users will be charged <code>$74.95</code> (fixed and recurring price) for the first month. After that, they will be charged a recurring price of <code>$24.95</code> monthly in perpetuity.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-13</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$74.95</code> for <code>2021-09-13</code> to <code>2021-10-13</code> (Fixed price as well as recurring price)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-13</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-10-13</code> to <code>2021-11-13</code> (only recurring price)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_discount_phase_and_evergreen_phase">Discount Phase and Evergreen Phase</h3>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/discount-and-evergreen.xml">Discount and Evergreen</a> catalog. In this case, the <code>standard-monthly</code> plan has a <code>DISCOUNT</code> phase of <code>3</code> months (with a monthly charge of <code>$4.95</code>) followed by an <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code>. So, users will be charged <code>$4.95</code> (discounted price) for the first <code>3</code> months. After that, they will be charged a recurring price of <code>$24.95</code> monthly in perpetuity.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-15</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$4.95</code> due to <code>DISCOUNT</code> phase</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-15</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$4.95</code> for <code>2021-10-15</code> to <code>2021-11-15</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-12-15</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Discount phase ends, invoice generated for  <code>$24.95</code> for <code>2021-12-15</code> to <code>2022-01-15</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_catalog_with_multiple_plans">Catalog with Multiple Plans</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A catalog can contain multiple products.  Each product can be associated with multiple plans. Each plan can, in turn, have multiple phases (trial, discount, etc.).</p>
+</div>
+<div class="paragraph">
+<p>This section provides examples of catalogs that include multiple products and plans.</p>
+</div>
+<div class="sect2">
+<h3 id="_catalog_with_monthly_plan_and_annual_plan">Catalog with Monthly Plan and Annual Plan</h3>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/monthly-and-annual-plan.xml">Monthly and Annual Plan</a> catalog.</p>
+</div>
+<div class="paragraph">
+<p>Just like the catalogs explained above, this catalog has only one product (<code>Standard</code>). However, it has multiple plans that correspond to the <code>Standard</code> product as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plan Name</th>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Plan Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard_monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard_annual</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with an annual recurring charge of <code>$275</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>standard-monthly</code> plan on <code>2021-09-17</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-17</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-10-17</code> to <code>2021-11-17</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>standard-annual</code> plan on <code>2021-09-17</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$275</code> corresponding to the <code>standard-annual</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-17</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-10-17</code> to <code>2021-11-17</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2022-09-17</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated with two invoice items corresponding to both plans for <code>$299.95</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_catalog_with_add_on_plan">Catalog with Add-on plan</h3>
+<div class="paragraph">
+<p>This section uses the <a href="https://github.com/killbill/killbill-docs/blob/d7f8891546850dcb8767041c556ef04f589746ca/catalogs/monthly-no-trial-with-addon.xml">Monthly No Trial With Add-on</a> catalog.</p>
+</div>
+<div class="paragraph">
+<p>It has a <code>BASE</code> product and <code>ADD_ON</code> product as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add_on</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>It has two plans corresponding to both products as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plan Name</th>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Plan Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remotecontrol-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$17.95</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription corresponding to the <code>standard_monthly</code> plan on <code>2021-09-15</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-15</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-10-15</code> to <code>2021-11-15</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the <code>remotecontrol-monthly</code> add-on to the existing subscription  on <code>2021-09-15</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$17.95</code> corresponding to the <code>remotecontrol-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-15</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$42.90</code> for <code>2021-10-15</code> to <code>2021-11-15</code> corresponding to both plans.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_billing_alignment_rules">Billing Alignment Rules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another important section in the catalog is the <a href="https://docs.killbill.io/latest/userguide_subscription.html#_billing_alignment_rules">Billing Alignment Rules</a> section.</p>
+</div>
+<div class="paragraph">
+<p>A brief summary of billing alignment rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The "Billing Alignment Rules" section specifies whether customers are billed at the account level, subscription level, or subscription bundle level.</p>
+</li>
+<li>
+<p>If the catalog specifies <code>ACCOUNT</code> billing alignment, all the subscriptions belonging to the account are aligned and invoiced with the <em>Bill Cycle Day (BCD)</em> that was specified when the account was created.</p>
+</li>
+<li>
+<p>If the catalog specifies <code>SUBSCRIPTION</code> billing alignment, each subscription is invoiced as per its bill date.</p>
+</li>
+<li>
+<p>If the catalog specifies <code>BUNDLE</code> billing alignment, all the subscriptions within a bundle are aligned and invoiced on the same day.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This section provides examples of catalogs with different billing alignment rules.</p>
+</div>
+<div class="sect2">
+<h3 id="_account_billing_alignment">Account Billing Alignment</h3>
+<div class="paragraph">
+<p>When <code>ACCOUNT</code> billing alignment is specified in the catalog, the billing cycle of all the subscriptions are aligned with the <code>BCD</code> of the account. Note that this is the default billing alignment, so even when billing alignment rules are not explicitly specified in a catalog, it defaults to <code>ACCOUNT</code>.</p>
+</div>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/account-billing-alignment.xml">Account Billing Alignment</a> catalog. It specifies <code>ACCOUNT</code> billing alignment.</p>
+</div>
+<div class="paragraph">
+<p>For simplicity&#8217;s sake, this catalog includes a single product (<code>STANDARD</code>) and a single plan (<code>standard-monthly</code>) corresponding to it.</p>
+</div>
+<div class="sect3">
+<h4 id="_case_1_account_with_no_bcd">Case 1: Account with No BCD</h4>
+<div class="paragraph">
+<p>If no BCD is specified with the account, it defaults to the first bill date of the first subscription.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account. Leave BCD field empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account created, BCD is blank.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-16</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-16</code> to <code>2021-10-16</code>. BCD set to <code>16</code> (Since subscription is created on 16th)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-16</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-10-16</code> to <code>2021-11-16</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_case_2_account_with_bcd">Case 2: Account with BCD</h4>
+<div class="paragraph">
+<p>If a BCD is specified with the account, the subscriptions are invoiced on the specified day. If the start date of a subscription is different from the BCD, the first invoice is prorated. All subsequent invoices are aligned with the BCD.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account. Specify BCD as <code>25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account created with BCD set to <code>25</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-16</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$7.24</code> for <code>2021-09-16</code> to <code>2021-09-25</code> (prorated)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-25</code> to <code>2021-10-25</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_case_3_account_with_no_bcd_and_multiple_subscriptions_on_different_days">Case 3: Account with No BCD and Multiple Subscriptions on Different Days</h4>
+<div class="paragraph">
+<p>Even if there are multiple subscriptions associated with an account, all the subscriptions are aligned with the BCD. If the BCD is not explicitly set, it
+defaults to the first bill date of the first subscription. All subsequent subscriptions use this BCD.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account. Leave BCD field empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account created, BCD is blank.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-17</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-17</code> to <code>2021-10-17</code>. BCD set to <code>17</code> (Since subscription is created on 17th)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription, with date of <code>2021-09-25</code> (future date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No invoice is generated as a future date is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$18.30</code> for <code>2021-09-25</code> to <code>2021-10-17</code> (Prorated since BCD is 17)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-17</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated with two invoice items corresponding to both subscriptions for <code>$49.90</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_case_4_account_with_bcd_multiple_subscriptions_on_different_days">Case 4: Account with BCD, Multiple Subscriptions on Different Days</h4>
+<div class="paragraph">
+<p>If there is a BCD specified with the account, all subscriptions use this BCD irrespective of the subscription creation day.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account. Specify BCD as <code>25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account created with BCD set to <code>25</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-17</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$6.44</code> for <code>2021-09-17</code> to <code>2021-09-25</code> (Prorated since BCD is 25)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-25</code> to <code>2021-10-25</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription on <code>2021-09-30</code> (future date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No invoice is generated as a future date is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-25</code> to <code>2021-10-25</code>  (Second subscription not yet active)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-30</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$20.79</code> for <code>2021-09-30</code> to <code>2021-10-25</code> (Prorated since BCD is 25)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated with two invoice items corresponding to both subscriptions for <code>$49.90</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subscription_billing_alignment">Subscription Billing Alignment</h3>
+<div class="paragraph">
+<p>When <code>SUBSCRIPTION</code> billing alignment is specified in the catalog, each subscription is invoiced separately as per its bill date.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Note:</strong> <code>SUBSCRIPTION</code> billing alignment applies even for subscriptions that are part of the same subscription bundle. So, if a subscription bundle consists of a base plan and an add-on plan, the add-on plan is invoiced as per its own date and is NOT aligned with the base subscription billing date.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/subscription-billing-alignment.xml">Subscription Billing Alignment</a> catalog. It specifies <code>SUBSCRIPTION</code> billing alignment.</p>
+</div>
+<div class="paragraph">
+<p>It has only one product (<code>Standard</code>). However, it has multiple plans corresponding to the <code>Standard</code> product as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plan Name</th>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Plan Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard-annual</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with an annual recurring charge of <code>$275</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account. Specify BCD as <code>25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account created with BCD set to <code>25</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>standard-monthly</code> plan on <code>2021-09-17</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-17</code> to <code>2021-10-17</code> (BCD is ignored, subscription is billed as per its creation date)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-17</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-10-17</code> to <code>2021-11-17</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>standard-annual</code> plan with date of <code>2021-09-30</code> (future date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No invoice is generated as a future date is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-30</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$275</code> for <code>2021-09-30</code> to <code>2022-09-30</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-17</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-10-17</code> to <code>2021-11-17</code> corresponding to <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2022-09-30</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$275</code> for <code>2022-09-30</code> to <code>2023-09-30</code> corresponding to <code>standard-annual</code> plan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_bundle_billing_alignment">Bundle Billing Alignment</h3>
+<div class="paragraph">
+<p>When <code>BUNDLE</code> billing alignment is specified in the catalog, all subscriptions in a bundle are invoiced together. The bill day is derived from the first bill date of the first subscription.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Note:</strong> <code>BUNDLE</code> billing alignment applies only to subscriptions within a single bundle. This type of billing alignment does not affect subscriptions across different bundles. So, when multiple subscriptions are created in different bundles, each subscription is still billed as per its creation date.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/tree/4671dcd9da1cf021e85629ab67e3ffb6fb553bb1/catalogs/bundle-billing-alignment.xml">Bundle Billing Alignment</a> catalog. It specifies <code>BUNDLE</code> billing alignment.</p>
+</div>
+<div class="paragraph">
+<p>It has a <code>BASE</code> and an <code>ADD_ON</code> product as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add_on</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>It has two plans corresponding to both products as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plan Name</th>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Plan Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$24.95</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remotecontrol-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$17.95</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account. Specify BCD as <code>25</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account created with BCD set to <code>25</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>standard-monthly</code> plan on <code>2021-09-20</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-09-20</code> to <code>2021-10-20</code> (BCD is ignored, subscription is billed as per its creation date)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-20</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$24.95</code> for <code>2021-10-20</code> to <code>2021-11-20</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the <code>remotecontrol-monthly</code> add-on to the existing subscription with date of <code>2021-09-30</code> (future date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No invoice is generated as a future date is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-30</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$11.97</code> for <code>2021-09-30</code> to <code>2021-10-20</code> corresponding to the <code>remotecontrol-monthly</code> plan (Prorated since <code>BUNDLE</code> billing alignment is used)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-20</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$42.90</code> for <code>2021-10-20</code> to <code>2021-11-20</code> corresponding to both plans</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_subscription_alignment_rules">Subscription Alignment Rules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://docs.killbill.io/latest/userguide_subscription.html#_subscription_alignment_rules"><em>Subscription Alignment Rules</em></a> section in the catalog can be used to specify rules that are useful for advanced use cases. This section explains some of these rules.</p>
+</div>
+<div class="sect2">
+<h3 id="_plan_creation_addon_phase_alignment">Plan Creation Addon Phase Alignment</h3>
+<div class="paragraph">
+<p>The <a href="https://docs.killbill.io/latest/userguide_subscription.html#_subscription_alignment_rules">plan creation addon phase alignment</a> rules specify how the phases of an addon subscription <em>align</em> with the phases of the base subscription.</p>
+</div>
+<div class="paragraph">
+<p>A quick summary of plan creation phase alignment rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A rule specifies the name of an addon product and how its phases should align with the phases of the base product.</p>
+</li>
+<li>
+<p>There are two possible values for phase alignment, <code>START_OF_BUNDLE</code> and <code>START_OF_SUBSCRIPTION</code>.</p>
+</li>
+<li>
+<p><code>START_OF_BUNDLE</code> causes the phases of the add-on to start on the date when the base plan was first created. This causes the phases of add-on subscription to align with the phases of the base subscription (provided the phases are of the same length)</p>
+</li>
+<li>
+<p><code>START_OF_SUBSCRIPTION</code> causes the phases of the add-on subscription to start with the add-on subscription irrespective of the base subscription.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/blob/d7f8891546850dcb8767041c556ef04f589746ca/catalogs/plan-creation-addon-phase-alignment.xml">Plan Creation Addon Phase Alignment</a> catalog.</p>
+</div>
+<div class="paragraph">
+<p>It has a <code>BASE</code> product and two <code>ADD_ON</code> products as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add_on</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OilSlick</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add_on</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>It has the following plans corresponding to the products:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plan Name</th>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Plan Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TRIAL</code> phase of <code>10</code> days followed by an <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$25</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remotecontrol-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TRIAL</code> phase of <code>10</code> days followed by an <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$15</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oilslick-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OilSlick</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TRIAL</code> phase of <code>10</code> days followed by an <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$10</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>It specifies the following add-on phase alignment rules:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Predicate</th>
+<th class="tableblock halign-left valign-top">Alignment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">product=RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">START_OF_SUBSCRIPTION</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">product=OilSlick</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">START_OF_BUNDLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">; (Anything else)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">START_OF_BUNDLE</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_rule_1_if_productremotecontrol_alignmentstart_of_subscription">Rule 1: If product=RemoteControl, alignment=START_OF_SUBSCRIPTION</h4>
+<div class="paragraph">
+<p>This rule specifies that if the <code>RemoteControl</code> add-on is added to a base subscription, its phases should start on the date that the the add-on subscription is added irrespective of the base subscription.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription corresponding to the <code>standard-monthly</code> plan on <code>2021-09-23</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$0</code> (since subscription is in trial phase)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-03</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$25</code> for <code>2021-10-03</code> to <code>2021-11-03</code> (Trial phase ends)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the <code>remotecontrol-monthly</code> add-on to the existing subscription with date <code>2021-09-30</code> (future date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No invoice is generated as a future date is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-30</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$0</code> corresponding to the <code>remotecontrol-monthly</code> plan (since the subscription is in trial phase)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-03</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated with only one invoice item corresponding to  <code>standard-monthly</code> plan. Since <code>RemoteControl</code> uses <code>START_OF_SUBSCRIPTION</code> alignment rule, its phases start on the day the subscription starts (<code>2021-09-30</code>). So, <code>remotecontrol-monthly</code> is still in <code>TRIAL</code> phase and does not have an invoice entry.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rule_2_if_productoilslick_alignmentstart_of_bundle">Rule 2: If product=OilSlick, alignment=START_OF_BUNDLE</h4>
+<div class="paragraph">
+<p>This rule specifies that if the <code>OilSlick</code> add-on is added to a base subscription, its phases should start on the date of the base subscription.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription corresponding to the <code>standard-monthly</code> plan on <code>2021-09-23</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$0</code> (since subscription is in trial phase)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-03</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$25</code> for <code>2021-10-03</code> to <code>2021-11-03</code> (Trial phase ends)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the <code>oilslick-monthly</code> add-on to the existing subscription with date <code>2021-09-30</code> (future date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No invoice is generated as a future date is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-09-30</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$0</code> corresponding to the <code>oilslick-monthly</code> plan (since subscription is in trial phase)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-03</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated with two invoice items corresponding to <code>standard-monthly</code> and <code>oilslick-monthly</code> plans. Since
+ <code>OilSlick</code> uses <code>START_OF_BUNDLE</code> alignment rule, its phases start on the day the base subscription starts (<code>2021-09-23</code>). So, <code>TRIAL</code> phase ends on <code>2021-10-03</code> and an invoice item is created.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plan_cancellation_timing">Plan Cancellation Timing</h3>
+<div class="paragraph">
+<p>The <a href="https://docs.killbill.io/latest/userguide_subscription.html#_plan_cancellation_timing">plan cancellation timing</a> rules specify how the billing policy is affected when a plan is canceled.</p>
+</div>
+<div class="paragraph">
+<p>A quick summary of plan cancellation rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A rule specifies one of <code>productCategory</code>, <code>billingPeriod</code>,<code>priceList</code>, <code>phaseType</code> and its cancellation <code>policy</code>.</p>
+</li>
+<li>
+<p>There are two possible values for cancellation policy, <code>END_OF_TERM</code> and <code>IMMEDIATE</code>.</p>
+</li>
+<li>
+<p><code>END_OF_TERM</code> causes the cancellation to be applied at the end of the billing period. This type of cancellation rule avoids generating credits.</p>
+</li>
+<li>
+<p><code>IMMEDIATE</code> causess the cancellation to be applied immediately. This type of cancellation rule results in a credit being generated corresponding to the balance of the subscription that has been paid for but not used.</p>
+</li>
+<li>
+<p>The cancellation policy specified here is the <strong>default</strong> cancellation policy. This is applicable only in the case when an explicit cancellation policy is not specified (via Kaui or API call).</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Note:</strong>
+The cancellation policy specified in this section applies only to <em>billing</em>. The cancellation policy for entitlements can be specified explicitly via Kaui or an API call. It defaults to <em>immediate</em> as explained in the <a href="https://docs.killbill.io/latest/userguide_subscription.html#components-entitlement"><em>Subscription Billing</em></a> document.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/blob/d7f8891546850dcb8767041c556ef04f589746ca/catalogs/plan-cancellation-timing.xml">Plan Cancellation Timing</a> catalog.</p>
+</div>
+<div class="paragraph">
+<p>It has the following products/plans:</p>
+</div>
+<div class="sect3">
+<h4 id="_products">Products</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add_on</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_plans">Plans</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plan Name</th>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Plan Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$25</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remotecontrol-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteControl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$15</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>It specifies the following plan cancellation rules:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Predicate</th>
+<th class="tableblock halign-left valign-top">Cancellation Policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">productCategory=BASE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">END_OF_TERM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">productCategory=ADD_ON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMMEDIATE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">; (anything else)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">END_OF_TERM</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rule_1_if_productcategorybase_cancellation_policyend_of_term">Rule 1: If productCategory=BASE, cancellation policy=END_OF_TERM</h4>
+<div class="paragraph">
+<p>This rule specifies that if the category of a product is <code>BASE</code>  product, cancellation should should occur at the end of the billing period.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>standard-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$25</code> for <code>2021-09-29</code> to <code>2021-10-29</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cancel subscription (specify default policy)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice with credit is NOT generated (Since <code>BASE</code> product category uses <code>END_OF_TERM</code> cancellation policy)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rule_2_if_productcategoryadd_on_cancellation_policyimmediate">Rule 2: If productCategory=ADD_ON, cancellation policy=IMMEDIATE</h4>
+<div class="paragraph">
+<p>This rule specifies that if the category of a product is <code>ADD_ON</code>  product, cancellation should should occur immediately.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>standard-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$25</code> for <code>2021-09-29</code> to <code>2021-10-29</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add the <code>remotecontrol-monthly</code> add-on to the existing subscription on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$15</code> for <code>2021-09-29</code> to <code>2021-10-29</code> corresponding to  <code>remotecontrol-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cancel add-on subscription (specify default policy)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An invoice is generated with a credit of <code>$15</code>(Since <code>ADDON</code> product uses <code>IMMEDIATE</code> cancellation policy)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cancel base subscription (specify default policy)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice with credit is NOT generated  (Since <code>BASE</code> product  uses <code>END_OF_TERM</code> cancellation policy)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plan_change_timing">Plan Change Timing</h3>
+<div class="paragraph">
+<p>The <a href="https://docs.killbill.io/latest/userguide_subscription.html#_plan_change_timing">plan change timing</a> rules specify how the system should behave when a subscription plan is changed.</p>
+</div>
+<div class="paragraph">
+<p>A quick summary of plan change rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A rule specifies one of <code>phaseType</code>,  <code>fromProduct</code>/<code>toProduct</code>, <code>fromProductCategory</code>/ <code>toProductCategory</code>, <code>fromBillingPeriod</code>/ <code>toBillingPeriod</code>, <code>fromPriceList</code>/<code>toPriceList</code> and its change <code>policy</code>.</p>
+</li>
+<li>
+<p>There are three possible values for change policy, <code>END_OF_TERM</code>,  <code>IMMEDIATE</code> and <code>ILLEGAL</code>.</p>
+</li>
+<li>
+<p><code>END_OF_TERM</code> specifies that the plan change should happen at the end of the current billing period.</p>
+</li>
+<li>
+<p><code>IMMEDIATE</code> specifies that the plan change should happen immediately.</p>
+</li>
+<li>
+<p><code>ILLEGAL</code> specifies that the plan change is not allowed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This example uses the  <a href="https://github.com/killbill/killbill-docs/blob/d7f8891546850dcb8767041c556ef04f589746ca/catalogs/plan-change-timing.xml">Plan Change Timing</a> catalog.</p>
+</div>
+<div class="paragraph">
+<p>It has the following products/plans:</p>
+</div>
+<div class="sect3">
+<h4 id="_products_2">Products</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Super</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Premium</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_plans_2">Plans</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plan Name</th>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">Plan Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">standard-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TRIAL</code> phase of <code>30</code> days followed by an <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$100</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sports-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$500</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">super-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Super</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$1000</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">premium-monthly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Premium</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single <code>EVERGREEN</code> phase with a monthly recurring charge of <code>$2000</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>It specifies the following plan cancellation rules:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Predicate</th>
+<th class="tableblock halign-left valign-top">Change Policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">phaseType=TRIAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMMEDIATE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fromProduct=Sports and toProduct=Super</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMMEDIATE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fromProduct=; and toProduct=Super (any fromProduct)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMMEDIATE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fromProduct=Premium and toProduct=Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ILLEGAL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">; (anything else)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">END_OF_TERM</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rule_1_if_phasetypetrial_change_policyimmediate">Rule 1: If phaseType=TRIAL, change policy=IMMEDIATE</h4>
+<div class="paragraph">
+<p>This rule specifies that if a product is in <code>TRIAL</code> phase, plan change should take effect immediately.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>standard-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$0</code> (since subscription is in trial phase)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change subscription to use the <code>sports-monthly</code> plan (specify default policy)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plan change takes effect immediately (Invoice generated for <code>$500</code> for <code>2021-09-29</code> to <code>2021-10-29</code> corresponding to the <code>sports-monthly</code> plan)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$500</code> for <code>2021-10-29</code> to <code>2021-11-29</code> corresponding to the <code>sports-monthly</code> plan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rule_2_if_fromproductsports_and_toproductsuper_change_policyimmediate">Rule 2: If fromProduct=Sports and toProduct=Super, change policy=IMMEDIATE</h4>
+<div class="paragraph">
+<p>This rule specifies that if the plan change involves upgrading a product from <code>Sports</code> to <code>Super</code>, it should take effect immediately.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>sports-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$500</code> for <code>2021-09-29</code> to <code>2021-10-29</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change subscription to use the <code>super-monthly</code> plan (specify default policy)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plan change takes effect immediately (Since the monthly price for <code>super-monthly</code> is <code>$1000</code>, an invoice is generated for <code>$500</code> for <code>2021-09-29</code> to <code>2021-10-29</code> corresponding to the balance amount)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$1000</code> for <code>2021-10-29</code> to <code>2021-11-29</code> corresponding to the <code>super-monthly</code> plan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rule_3_if_toproductpremium_change_policyimmediate_any_fromproduct_value">Rule 3: If toProduct=Premium, change policy=IMMEDIATE (any fromProduct value)</h4>
+<div class="paragraph">
+<p>This rule specifies that if the plan change involves upgrading to <code>Premium</code>, it should take effect immediately.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>sports-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$500</code> for <code>2021-09-29</code> to <code>2021-10-29</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change subscription to use the <code>premium-monthly</code> plan (specify default policy)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plan change takes effect immediately (Since the monthly price for <code>premium-monthly</code> is <code>$2000</code>, an invoice is generated for <code>$1500</code> for <code>2021-09-29</code> to <code>2021-10-29</code> corresponding to the balance amount)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$2000</code> for <code>2021-10-29</code> to <code>2021-11-29</code> corresponding to the <code>premium-monthly</code> plan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rule_4_if_fromproductpremium_and_toproductstandard_change_policyillegal">Rule 4: If fromProduct=Premium and toProduct=Standard, change policy=ILLEGAL</h4>
+<div class="paragraph">
+<p>This rule specifies that if the plan change involves upgrading from <code>Standard</code> to <code>Premium</code>, it should not be allowed.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>premium-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$2000</code> for <code>2021-09-29</code> to <code>2021-10-29</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change subscription to use the <code>standard-monthly</code> plan (specify default policy)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plan change not allowed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rule_5_for_anything_else_change_policyend_of_term">Rule 5: For anything else, change policy=END_OF_TERM</h4>
+<div class="paragraph">
+<p>This is the default rule. It specifies that any other plan changes should occur at the end of the billing period.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>sports-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$500</code> for <code>2021-09-29</code> to <code>2021-10-29</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change subscription to use the <code>standard-monthly</code> plan (specify default policy)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plan change takes effect end of term ( Invoice item corresponding to a credit is not generated)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$100</code> for <code>2021-10-29</code> to <code>2021-11-29</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage_billing">Usage Billing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kill Bill supports usage based billing as explained in the <a href="https://docs.killbill.io/latest/userguide_subscription.html#components-catalog-usage"><em>Subscription Billing</em></a> document. A quick summary about usage billing:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Users are billed based on their usage data as defined in the catalog. The <code>Plan</code> section in the catalog can contain one or more usage section(s) in addition to other non usage based sections.</p>
+</li>
+<li>
+<p>Kill Bill supports two types of usage billing: <code>CONSUMABLE</code> and <code>CAPACITY</code></p>
+</li>
+<li>
+<p>In <code>CONSUMABLE</code> billing, users are billed based on the number of units consumed. Two <code>TierBlockPolicy</code> policies are supported: <code>ALL_TIER</code> and <code>TOP_TIER</code>. The <code>ALL_TIER</code> policy charges users across each tier while the <code>TOP_TIER</code> policy charges users at the top tier.</p>
+</li>
+<li>
+<p>In <code>CAPACITY</code> billing users are charged a flat rate based on the units consumed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Let us take a look at a few catalog examples.</p>
+</div>
+<div class="sect2">
+<h3 id="_consumable_billing_with_all_tiers_policy">Consumable Billing with ALL_TIERS policy</h3>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/blob/5d5d7a2219752da8a0d9456cc5a975161388088c/catalogs/consumable-billing-all-tiers.xml">Consumable Billing All Tiers</a> catalog. It has a <code>water-monthly</code> plan with a <code>MONTHLY</code> recurring charge of <code>$30</code>. In addition, it also has a usage section with <code>usageType=CONSUMABLE</code>, <code>tierBlockPolicy=ALL_TIERS</code> and the following <code>tieredBlock</code> sections:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Unit</th>
+<th class="tableblock halign-left valign-top">Size</th>
+<th class="tableblock halign-left valign-top">Price</th>
+<th class="tableblock halign-left valign-top">Max</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">liter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$1.50</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users will be charged at $1.50 per liter for the first 1000 liters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">liter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users will be charged at $2.0 per liter for any units consumed above <code>1000</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>water-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Because <strong>IN_ARREAR</strong> billing mode is specified, the system does not generate an invoice (yet).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>400</code> with date <code>2021-10-01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Again, invoice not generated since <strong>IN_ARREAR</strong> billing mode is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$630</code> for <code>2021-09-29</code> to <code>2021-10-29</code>. This is calculated as: <code>30 + (400 x 1.5) = 630</code> (Since <code>400</code> units are consumed, user is charged <code>$1.5</code> per liter as per the first tier)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>1200</code> with date <code>2021-11-01</code>. Trigger invoice dry run with target date <code>2021-11-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$1930</code> for <code>2021-10-29</code> to <code>2021-11-29</code>. This is calculated as: <code>30 + (1000 x 1.5) + (200 X 2.0) = 1930</code> (Since <code>1200</code> units are consumed, the first <code>1000</code> units are charged at <code>$1.5</code> per liter as per the first tier and the next <code>200</code> units are charged at at <code>$2.0</code> per liter as per the second tier)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>See <a href="https://docs.killbill.io/latest/consumable_in_arrear.html"><em>Consumable In Arrear Tutorial</em></a> for additional information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_consumable_billing_with_top_tier_policy">Consumable Billing with TOP_TIER policy</h3>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/blob/5d5d7a2219752da8a0d9456cc5a975161388088c/catalogs/consumable-billing-top-tier.xml">Consumable Billing Top Tier</a> catalog. This catalog is exactly the same as the <a href="https://github.com/killbill/killbill-docs/blob/5d5d7a2219752da8a0d9456cc5a975161388088c/catalogs/consumable-billing-all-tiers.xml">Consumable Billing All Tiers</a> catalog explained above. The only difference is that it uses  <code>tierBlockPolicy=TOP_TIER</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>water-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Because <strong>IN_ARREAR</strong> billing mode is specified, the system does not generate an invoice (yet).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>400</code> with date <code>2021-10-01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Again, invoice not generated since <strong>IN_ARREAR</strong> billing mode is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$630</code> for <code>2021-09-29</code> to <code>2021-10-29</code>. This is calculated as: <code>30 + (400 x 1.5) = 630</code> (Since <code>400</code> units are consumed, user is charged <code>$1.5</code> per liter as per the first tier)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>1200</code> with date <code>2021-11-01</code>. Trigger invoice dry run with target date <code>2021-11-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$2430</code> for <code>2021-10-29</code> to <code>2021-11-29</code>. This is calculated as: <code>30 + (1200 x 2.0) = 2430</code>  (Since <code>1200</code> units are consumed, user is charged <code>$2.0</code> per liter as per the second tier)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_capacity_billing">Capacity Billing</h3>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/blob/5d5d7a2219752da8a0d9456cc5a975161388088c/catalogs/capacity-billing.xml">Capacity Billing</a> catalog.  It has a <code>water-monthly</code> plan with a <code>MONTHLY</code> recurring charge of <code>$30</code>. In addition, it also has a usage section with <code>usageType=CAPACITY</code>, and the following <code>tier</code> sections:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Max Limit</th>
+<th class="tableblock halign-left valign-top">Price</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$750.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users will be charged a flat charge of $750 if their units are less than or equal to 1000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$500.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users will be charged a flat charge of $500 if their units exceed 1000.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>water-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Because <strong>IN_ARREAR</strong> billing mode is specified, the system does not generate an invoice (yet).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>400</code> with date <code>2021-10-01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Again, invoice not generated since <strong>IN_ARREAR</strong> billing mode is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$780</code> for <code>2021-09-29</code> to <code>2021-10-29</code>. This is calculated as: <code>30 + 750 = 780</code> (Since <code>400</code> units are consumed, user is charged <code>$750</code> as per the first tier)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>1200</code> with date <code>2021-11-01</code> . Trigger invoice dry run with target date <code>2021-11-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$530</code> for <code>2021-10-29</code> to <code>2021-11-29</code>. This is calculated as: <code>30 + 500 = 530</code> (Since <code>1200</code> units are consumed, user is charged <code>$500</code> as per the second tier)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_multiple_usage_sections">Multiple Usage Sections</h3>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/tree/a6339c9dd4bb75da375f4755e45aa5c5c07ebe01/catalogs/consumable-billing-multiple-usage-sections.xml">Consumable Billing Multiple Usage Sections</a> catalog. It has a <code>cell-phone-monthly</code> plan with a <code>MONTHLY</code> recurring charge of <code>$30</code>. In addition, it  has two usage sections: <code>cell-phone-minutes-monthly-usage</code> and <code>mbytes-monthly-usage</code>. The <code>cell-phone-minutes-monthly-usage</code> usage section specifies the <code>ALL_TIERS</code> policy while the <code>mbytes-monthly-usage</code> usage section specifies the <code>TOP_TIER</code> policy.</p>
+</div>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>cell-phone-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Because <strong>IN_ARREAR</strong> billing mode is specified, the system does not generate an invoice (yet).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>400</code> for the <code>cell-phone-minutes</code> unitType with date <code>2021-10-01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Again, invoice not generated since <strong>IN_ARREAR</strong> billing mode is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$280</code> for <code>2021-09-29</code> to <code>2021-10-29</code>. It has 3 invoice items : <code>cell-phone-monthly-evergreen:$30</code>, <code>mbytes-monthly-usage:$0</code> and <code>cell-phone-minutes-monthly-usage:$250</code> (calculated as: <code>(100 x 1.0) + (300 x 0.5) = 250</code> as per the <code>ALL_TIERS</code> policy).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>1200</code> for the <code>Mbytes</code> unitType with date <code>2021-11-01</code> . Trigger invoice dry run with target date <code>2021-11-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$630</code> for <code>2021-10-29</code> to <code>2021-11-29</code>. It has 3 invoice items : <code>cell-phone-monthly-evergreen:$30</code>, <code>cell-phone-minutes-monthly-usage:$0</code> and <code>mbytes-monthly-usage:$630</code> (calculated as: <code>(1200 x 0.5) = 600</code> as per the <code>TOP_TIER</code> policy).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_block_size_greater_than_one">Block Size Greater Than One</h3>
+<div class="paragraph">
+<p>This example uses the <a href="https://github.com/killbill/killbill-docs/tree/a6339c9dd4bb75da375f4755e45aa5c5c07ebe01/catalogs/consumable-billing-block-size-more-than-one.xml">Consumable Billing Block Size More Than One</a> catalog. It has a <code>cell-phone-monthly</code> plan with a <code>MONTHLY</code> recurring charge of <code>$30</code>. In addition, it also has a usage section with <code>usageType=CONSUMABLE</code>, <code>tierBlockPolicy=ALL_TIERS</code> and the following <code>tieredBlock</code> sections:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Unit</th>
+<th class="tableblock halign-left valign-top">Size</th>
+<th class="tableblock halign-left valign-top">Price</th>
+<th class="tableblock halign-left valign-top">Max</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cell-phone-minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$1.00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A block size <code>10</code> is specified. So, users will be charged at $1.0 per 10 minutes. This is applicable for the for the first <code>100</code> blocks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cell-phone-minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Users will be charged at $2.0 per block for any blocks consumed above <code>100</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription for the <code>cell-phone-monthly</code> plan on <code>2021-09-29</code> (current date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Because <strong>IN_ARREAR</strong> billing mode is specified, the system does not generate an invoice (yet).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>400</code> with date <code>2021-10-01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Again, invoice not generated since <strong>IN_ARREAR</strong> billing mode is specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trigger invoice dry run with target date <code>2021-10-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$70</code> for <code>2021-09-29</code> to <code>2021-10-29</code>. This is calculated as: <code>30 + ((400/100) x 1.0) = 70</code> (Since <code>400</code> minutes (<code>40</code> blocks) are recorded, user is charged <code>$1.0</code> per block as per the first tier)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://killbill.github.io/slate/#usage-record-usage-for-a-subscription">Record a usage</a> of <code>110</code> with date <code>2021-11-01</code>. Trigger invoice dry run with target date <code>2021-11-29</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for  <code>$140</code> for <code>2021-10-29</code> to <code>2021-11-29</code>. This is calculated as: <code>30 + ((1000/100) x 1.0) + ((200/100) X 0.5) = 140</code> (Since <code>1200</code> minutes (<code>120</code> blocks) are recorded, the first <code>100</code> blocked are charged at <code>$1.0</code> per block as per the first tier and the next <code>20</code> blocks are charged at at <code>$0.5</code> per block as per the second tier)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_versioned_catalogs">Versioned Catalogs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kill Bill allows modifying the catalog over time. You can do this by creating a set of catalogs, one XML file for each version. Note that all the versions of a catalog need to have the same <code>catalogName</code> but different values for <code>effectiveDate</code>. The system will then rank such files based on their <code>effectiveDate</code> to create the various versions.</p>
+</div>
+<div class="paragraph">
+<p>You can do the following using versioned catalogs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add new plans</p>
+</li>
+<li>
+<p>Modify the price for an existing plan</p>
+</li>
+<li>
+<p>Delete plans</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Kill Bill uses the following rules to determine the active catalog version:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When there are multiple versions of a catalog, the catalog with an <code>effectiveDate</code> not later than the current date is treated as the active catalog. So any catalog version with a future <code>effectiveDate</code> is not treated as active until that date is reached.</p>
+</li>
+<li>
+<p>If there are multiple catalog versions with effective dates before the current date, the newest one is considered active.</p>
+</li>
+<li>
+<p>If all the catalog versions have effective dates after the current date, the oldest one is considered active.</p>
+</li>
+<li>
+<p>If there are multiple catalog versions, with the same date component but different time components in the <code>effectiveDate</code>, the one with the earliest time component is considered as active.</p>
+</li>
+<li>
+<p>When there is only one catalog version, the <code>effectiveDate</code> does not matter. So, irrespective of whether it is in the past or in the future, the catalog is treated as the active catalog.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Note:</strong>
+Currently Kill Bill requires the catalog names to be the same across different versions. Changing the name of the catalog results in an exception and momentarily freezes any further uploads even with the original catalog name. To workaround this, tenant specific cache can be cleared as explained <a href="https://killbill.github.io/slate/index.html?shell=#admin-invalidate-a-specific-cache-or-invalidate-all-caches">here</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The subsequent sections provide some examples of versioned catalogs.</p>
+</div>
+<div class="sect2">
+<h3 id="_add_new_plan">Add New Plan</h3>
+<div class="paragraph">
+<p>It is possible to add a new plan in a newer version of a catalog. The new plan is available only when the current date surpasses the <code>effectiveDate</code> in the new catalog version.</p>
+</div>
+<div class="paragraph">
+<p>This example uses the following catalogs:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Catalog Name</th>
+<th class="tableblock halign-left valign-top">effectiveDate</th>
+<th class="tableblock halign-left valign-top">Plan Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/killbill/killbill-docs/blob/5a61ac1957f9174fd4e291c7b61a17c186194388/catalogs/add-new-plan/add-new-plan-v1.xml">add-new-plan-v1.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2020-01-01T00:00:00+00:00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>standard-monthly</code> plan with <code>$30</code> recurring charge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/killbill/killbill-docs/blob/5a61ac1957f9174fd4e291c7b61a17c186194388/catalogs/add-new-plan/add-new-plan-v2.xml">add-new-plan-v2.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2021-01-15T00:00:00+00:00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>standard-monthly</code> plan with <code>$30</code> recurring charge, <code>standard-yearly</code> plan with <code>$540</code> recurring charge.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the date to <code>2021-01-01</code> and upload the catalogs mentioned above</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription to the <code>standard-monthly</code> plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$30</code> for <code>2021-01-01</code> to <code>2021-02-01</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription to the <code>standard-yearly</code> plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subscription creation fails (Since the <code>standard-yearly</code> plan is not yet active)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move the clock to <code>2021-02-01</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$30</code> for <code>2021-02-01</code> to <code>2021-03-01</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription to the <code>standard-yearly</code> plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$540</code> for <code>2021-02-01</code> to <code>2022-02-01</code> (Since <code>v2</code> is now active, subscription creation is successful)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modify_plan_price_without_affecting_existing_subscriptions">Modify Plan Price Without Affecting Existing Subscriptions</h3>
+<div class="paragraph">
+<p>It is possible to change the price of a plan in a newer version of a catalog. In such cases, the price change applies only to new subscriptions (subscriptions created after the catalog with the price change is effective). Older subscriptions continue to be billed as per the original price plan.</p>
+</div>
+<div class="paragraph">
+<p>This example uses the following catalogs:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Catalog Name</th>
+<th class="tableblock halign-left valign-top">effectiveDate</th>
+<th class="tableblock halign-left valign-top">Plan Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/killbill/killbill-docs/blob/5a61ac1957f9174fd4e291c7b61a17c186194388/catalogs/modify-plan-price-without-effective-date-for-existing-subscriptions/modify-plan-price-without-effective-date-for-existing-sub-v1.xml">modify-plan-price-without-effective-date-for-existing-sub-v1.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2020-01-01T00:00:00+00:00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>standard-monthly</code> plan with <code>$30</code> recurring charge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/killbill/killbill-docs/blob/5a61ac1957f9174fd4e291c7b61a17c186194388/catalogs/modify-plan-price-without-effective-date-for-existing-subscriptions/modify-plan-price-without-effective-date-for-existing-sub-v2.xml">modify-plan-price-without-effective-date-for-existing-sub-v2.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2021-01-15T00:00:00+00:00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>standard-monthly</code> plan with <code>$60</code> recurring charge</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the date to <code>2021-01-01</code> and upload the catalogs mentioned above</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription to the <code>standard-monthly</code> plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$30</code> for <code>2021-01-01</code> to <code>2021-02-01</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move the clock to <code>2021-02-01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$30</code> for <code>2021-02-01</code> to <code>2021-03-01</code> corresponding to the <code>standard-monthly</code> plan (Although v2 is effective, invoice is generated as per the old price since this is an existing subscription)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create another subscription to the <code>standard-monthly</code> plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$60</code> for <code>2021-02-01</code> to <code>2021-03-01</code> corresponding to the <code>standard-monthly</code> plan (Invoice is generated as per the new price since this is a new subscription)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modify_plan_price_and_use_new_price_for_existing_subscriptions">Modify Plan Price And Use New Price for Existing Subscriptions</h3>
+<div class="paragraph">
+<p>As mentioned earlier, when a plan price is changed, it applies only to new subscriptions. If you do need to apply the price change to existing subscriptions, the <code>effectiveDateForExistingSubscriptions</code> attribute needs to be specified corresponding to the plan.</p>
+</div>
+<div class="paragraph">
+<p>This example uses the following catalogs:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Catalog Name</th>
+<th class="tableblock halign-left valign-top">effectiveDate</th>
+<th class="tableblock halign-left valign-top">Plan Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/killbill/killbill-docs/blob/5a61ac1957f9174fd4e291c7b61a17c186194388/catalogs/modify-plan-price-with-effective-date-for-existing-subscriptions/modify-plan-price-with-effective-date-existing-sub-v1.xml">modify-plan-price-with-effective-date-existing-sub-v1.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2020-01-01T00:00:00+00:00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>standard-monthly</code> plan with <code>$30</code> recurring charge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/killbill/killbill-docs/blob/5a61ac1957f9174fd4e291c7b61a17c186194388/catalogs/modify-plan-price-with-effective-date-for-existing-subscriptions/modify-plan-price-with-effective-date-existing-sub-v2.xml">modify-plan-price-with-effective-date-existing-sub-v2.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2021-01-15T00:00:00+00:00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>standard-monthly</code> plan with <code>$60</code> recurring charge. The <code>standard-monthly</code> plan has <code>effectiveDateForExistingSubscriptions=2021-03-01T00:00:00+00:00</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the date to <code>2021-01-01</code> and upload both the catalogs mentioned above</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription to the <code>standard-monthly</code> plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$30</code> for <code>2021-01-01</code> to <code>2021-02-01</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move the clock to <code>2021-02-01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$30</code> for <code>2021-02-01</code> to <code>2021-03-01</code> corresponding to the <code>standard-monthly</code> plan (Although v2 is effective, invoice is generated as per the old price since this is an existing subscription and <code>effectiveDateForExistingSubscriptions</code> is not reached)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move the clock to  <code>2021-03-01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice generated for <code>$60</code> for <code>2021-03-01</code> to <code>2021-04-01</code> corresponding to the <code>standard-monthly</code> plan (Invoice is generated as per the new price since <code>effectiveDateForExistingSubscriptions</code> is reached)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_retire_plan">Retire Plan</h3>
+<div class="paragraph">
+<p>It is possible to delete a plan in a newer version of a catalog. In such cases, no new subscriptions can be created corresponding to the plan. However, existing subscriptions continue to be billed as per the original price plan.</p>
+</div>
+<div class="paragraph">
+<p>This example uses the following catalogs:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Catalog Name</th>
+<th class="tableblock halign-left valign-top">effectiveDate</th>
+<th class="tableblock halign-left valign-top">Plan Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/killbill/killbill-docs/blob/5a61ac1957f9174fd4e291c7b61a17c186194388/catalogs/retire-plan/retire-plan-v1.xml">retire-plan-v1.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2020-01-01T00:00:00+00:00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>standard-monthly</code> plan with <code>$30</code> recurring charge, <code>standard-weekly</code> plan with <code>$15</code> recurring charge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/killbill/killbill-docs/blob/5a61ac1957f9174fd4e291c7b61a17c186194388/catalogs/retire-plan/retire-plan-v2.xml">retire-plan-v2.xml</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2021-01-15T00:00:00+00:00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>standard-weekly</code> plan with <code>$15</code> recurring charge</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following table lists the actions and their results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the date to <code>2021-01-01</code> and upload the catalogs mentioned above</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a subscription to the <code>standard-monthly</code> plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$30</code> for <code>2021-01-01</code> to <code>2021-02-01</code> corresponding to the <code>standard-monthly</code> plan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move the clock to <code>2021-02-01</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoice is generated for <code>$30</code> for <code>2021-02-01</code> to <code>2021-03-01</code> corresponding to the <code>standard-monthly</code> plan (Although v2 is effective and <code>standard-monthly</code> is not present in v2, invoice is generated since this is an existing subscription)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create another subscription to the <code>standard-monthly</code> plan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subscription creation fails since v2 is now active and the <code>standard-monthly</code> plan is not present in v2.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_information">Additional Information</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.killbill.io/latest/userguide_subscription.html#components-catalog"><em>Subscription Billing User Guide</em></a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.killbill.io/latest/invoice_subsystem.html"><em>Invoice Subsystem</em></a></p>
+</div>
+</div>
+</div></div><div class="bottom-nav-links"><a href="#" id="prev-nav-link" class="bottom-nav-link card prev"><span class="arrow-icon left"><svg class="i-arrow" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.19526 1.02876C4.45561 0.768409 4.87772 0.768409 5.13807 1.02876C5.39842 1.28911 5.39842 1.71122 5.13807 1.97157L2.27614 4.8335H11.3333C11.7015 4.8335 12 5.13197 12 5.50016C12 5.86835 11.7015 6.16683 11.3333 6.16683H2.27614L5.13807 9.02876C5.39842 9.28911 5.39842 9.71122 5.13807 9.97157C4.87772 10.2319 4.45561 10.2319 4.19526 9.97157L0.195261 5.97157C-0.0650883 5.71122 -0.0650883 5.28911 0.195261 5.02876L4.19526 1.02876Z" fill=""/></svg><span class="prev-text">Previous</span></span><span id="prev-navigator" class="bottom-nav-text">Prev</span>                               </a><a href="#" id="next-nav-link" class="bottom-nav-link card next"><span class="arrow-icon"><span class="next-text">Next</span><svg class="i-arrow icon-left" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.19526 1.02876C4.45561 0.768409 4.87772 0.768409 5.13807 1.02876C5.39842 1.28911 5.39842 1.71122 5.13807 1.97157L2.27614 4.8335H11.3333C11.7015 4.8335 12 5.13197 12 5.50016C12 5.86835 11.7015 6.16683 11.3333 6.16683H2.27614L5.13807 9.02876C5.39842 9.28911 5.39842 9.71122 5.13807 9.97157C4.87772 10.2319 4.45561 10.2319 4.19526 9.97157L0.195261 5.97157C-0.0650883 5.71122 -0.0650883 5.28911 0.195261 5.02876L4.19526 1.02876Z" fill=""/></svg></span><span id="next-navigator" class="bottom-nav-text">Next</span></a></div></article></div><div class="bd-links-wrapper"><nav class="bd-links toc right-side-menu" id="myScrollspy" data-toggle="toc"></nav></div></div></div></div></div></main><script src="https://cdn.staticaly.com/gh/afeld/bootstrap-toc/v1.0.0/dist/bootstrap-toc.min.js"></script><script type="module" src="/javascripts/kb.js"></script><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script><script>docsearch({apiKey: '3ef227e7fd5e2e1a3fffd880484934bf', container: '#docsearch', appId: 'S2ISXITURI', indexName: 'killbill'});</script></body></html>
